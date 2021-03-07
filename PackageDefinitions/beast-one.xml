@@ -1,0 +1,39 @@
+<AssetPackage Name="beast-one" Version="0.1.0">
+	<ItemSettings>
+		<ContentType>AIRCRAFT</ContentType>
+		<Title>Beast One Microjet</Title>
+		<Manufacturer>Beast.aero</Manufacturer>
+		<Creator>Andreas Schoenwaelder</Creator>
+	</ItemSettings>
+	<Flags>
+		<VisibleInStore>true</VisibleInStore>
+		<CanBeReferenced>true</CanBeReferenced>
+	</Flags>
+	<AssetGroups>
+		<AssetGroup Name="Beast_One">
+			<Type>SimObject</Type>
+			<Flags>
+				<FSXCompatibility>false</FSXCompatibility>
+			</Flags>
+			<AssetDir>PackageSources\SimObjects\Airplanes\Beast_One\</AssetDir>
+			<OutputDir>SimObjects\Airplanes\Beast_One\</OutputDir>
+		</AssetGroup>
+		<AssetGroup Name="ContentInfo">
+			<Type>Copy</Type>
+			<Flags>
+				<FSXCompatibility>false</FSXCompatibility>
+			</Flags>
+			<AssetDir>PackageDefinitions\beast-one\ContentInfo</AssetDir>
+			<OutputDir>ContentInfo\beast-one\</OutputDir>
+		</AssetGroup>
+		<AssetGroup Name="MarketplaceData">
+			<Type>MarketplaceData</Type>
+			<Flags>
+				<FSXCompatibility>false</FSXCompatibility>
+			</Flags>
+			<AssetDir>PackageDefinitions\beast-one\MarketplaceData\</AssetDir>
+			<OutputDir>MarketplaceData\beast-one\</OutputDir>
+		</AssetGroup>
+	</AssetGroups>
+</AssetPackage>
+

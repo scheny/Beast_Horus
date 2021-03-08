@@ -1,0 +1,22 @@
+{
+  "market-data": {
+    "Neutral": {
+      "creator": "Andreas Schoenwaelder",
+      "title": "Beast One Microjet",
+      "description": "Beast One Microjet - The next generation of personal jet flying",
+      "tags": "",
+      "thumbnail_main": "",
+      "thumbnail_secondary": "",
+      "categories": "TT:MARKETPLACE.CATEGORY.AIRCRAFT\/TT:MARKETPLACE.CATEGORY.AIRCRAFT.JET",
+      "media-backgrounds": [],
+      "blocks": [
+        {
+          "type": "HISTORICAL-DATA",
+          "data": {
+            "text": ""
+          }
+        }
+      ]
+    }
+  }
+}

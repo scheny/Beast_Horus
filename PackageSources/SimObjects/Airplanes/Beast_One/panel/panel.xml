@@ -1,229 +1,321 @@
 <PlaneHTMLConfig>
-
-	<Instrument>
-		<Name>AS1000_PFD</Name>
-		<SyntheticVision>True</SyntheticVision>
-		<Electric>
-			<And>
-				<Simvar name="CIRCUIT ON:31" unit="Boolean"/>
-			</And>
-		</Electric>
-	</Instrument>  
-
-	<Instrument>
-		<Name>AS1000_AttitudeBackup</Name>
-		<Electric>
-			<And>
-				<Simvar name="CIRCUIT ON:50" unit="Boolean"/>
-			</And>
-		</Electric>
-	</Instrument>
-
-	<Instrument>
-		<Name>AS1000_SpeedBackup</Name>
-		<Electric>
-			<And>
-				<Simvar name="CIRCUIT ON:51" unit="Boolean"/>
-			</And>
-		</Electric>
-	</Instrument>
-
-	<Instrument>
-		<Name>AS1000_MFD</Name>
-		<Electric>
-			<And>
-				<Simvar name="CIRCUIT ON:32" unit="Boolean"/>
-			</And>
-		</Electric>
-	</Instrument>
-
-	<!-- Annuntiations -->
-
-	<Annunciations>
-		<Annunciation>
-			<Type>Advisory</Type>
-			<Text>L AUXPUMP ON</Text>
-			<Condition>
-				<And>
-					<Simvar name="FUEL TRANSFER PUMP ON:1" unit="Boolean"/>
-					<Equal>
-						<Simvar name="FUEL SELECTED TRANSFER MODE" unit="Enum"/>
-						<Constant>5</Constant>
-					</Equal>
-				</And>
-			</Condition>
-		</Annunciation>
-		<Annunciation>
-			<Type>Advisory</Type>
-			<Text>R AUXPUMP ON</Text>
-			<Condition>
-				<And>
-					<Simvar name="FUEL TRANSFER PUMP ON:2" unit="Boolean"/>
-					<Equal>
-						<Simvar name="FUEL SELECTED TRANSFER MODE" unit="Enum"/>
-						<Constant>5</Constant>
-					</Equal>
-				</And>
-			</Condition>
-		</Annunciation>
-		<Annunciation>
-			<Type>Advisory</Type>
-			<Text>L GLOW ON </Text>
-			<Condition>
-				<Simvar name="RECIP ENG GLOW PLUG ACTIVE:1" unit="Boolean"/>
-			</Condition>
-		</Annunciation>
-		<Annunciation>
-			<Type>Advisory</Type>
-			<Text>R GLOW ON </Text>
-			<Condition>
-				<Simvar name="RECIP ENG GLOW PLUG ACTIVE:2" unit="Boolean"/>
-			</Condition>
-		</Annunciation>
-
-		<!-- TODO: see DA62 POH
-		- L/R ECU A FAIL
-		- L/R ECU B FAIL
-		- L/R ALTN FAIL
-		- STAL HT FAIL
-		- AHRS ALIGN
-		-->
+  
+  <Instrument>
+    <Name>AS3X_Touch_1</Name>
+    <SyntheticVision>True</SyntheticVision>
+    <Electric>
+		<Simvar name="CIRCUIT GENERAL PANEL ON" unit="Bool"/>
+    </Electric>
+  </Instrument>
+  
+  <Instrument>
+    <Name>AS1000_AttitudeSpeedBackup</Name>
+    <Electric>
+		<Simvar name="CIRCUIT GENERAL PANEL ON" unit="Bool"/>
+    </Electric>
+  </Instrument>
+  
+  <!--Engine Display -->
+  
+  <EngineDisplay>
+  
+		<Gauge> <!-- /!\ Values extrapolated, absolutly not sure /!\ -->
+			<Type>Circular</Type>
+			<ID>MANIN_Gauge</ID>
+			<Unit>MAN IN</Unit>
+			<Minimum>0</Minimum>
+			<Maximum>40</Maximum>
+			<Style>
+				<BeginAngle>-45</BeginAngle>
+				<EndAngle>180</EndAngle>
+				<ValuePos>End</ValuePos>
+				<CursorType>Triangle</CursorType>
+			</Style>
+			<Value>
+				<Simvar name="RECIP ENG MANIFOLD PRESSURE:1" unit="inHG"/>
+			</Value>
+			<ColorZone>
+				<Color>green</Color>
+				<Begin>0</Begin>
+				<End>30</End>
+			</ColorZone>
+			<ColorZone>
+				<Color>white</Color>
+				<Begin>30</Begin>
+				<End>40</End>
+			</ColorZone>
+			<BeginText></BeginText>
+			<EndText></EndText>
+		</Gauge>
+  
+		<Gauge>
+			<Type>Circular</Type>
+			<ID>RPM_Gauge</ID>
+			<Unit>RPM</Unit>
+			<Minimum>0</Minimum>
+			<Maximum>2750</Maximum> <!-- Not Sure -->
+			<Style>
+				<BeginAngle>-45</BeginAngle>
+				<EndAngle>180</EndAngle>
+				<ValuePos>End</ValuePos>
+				<CursorType>Triangle</CursorType>
+			</Style>
+			<Value>
+				<Simvar name="PROP RPM:1" unit="rpm"/>
+			</Value>
+			<ColorZone>
+				<Color>green</Color>
+				<Begin>500</Begin>
+				<End>2700</End>
+			</ColorZone>
+			<ColorLine>
+				<Color>red</Color>
+				<Position>2701</Position>
+			</ColorLine>
+			<BeginText></BeginText>
+			<EndText></EndText>
+			<RedBlink>
+				<Greater>
+					<Simvar name="PROP RPM:1" unit="rpm"/>
+					<Constant>2700</Constant>
+				</Greater>
+			</RedBlink>
+		</Gauge>
 		
-		<Annunciation>
-			<Type>Caution</Type>
-			<Text>L FUEL LOW</Text>
-			<Condition>
-				<Lower>
-					<Simvar name="FUEL TANK LEFT MAIN QUANTITY" unit="gallon"/>
-					<Constant>4</Constant>
-				</Lower>
-			</Condition>
-		</Annunciation>
-		<Annunciation>
-			<Type>Caution</Type>
-			<Text>R FUEL LOW</Text>
-			<Condition>
-				<Lower>
-					<Simvar name="FUEL TANK RIGHT MAIN QUANTITY" unit="gallon"/>
-					<Constant>4</Constant>
-				</Lower>
-			</Condition>
-		</Annunciation>
-
-		<Annunciation>
-			<Type>Caution</Type>
-			<Text>LOW VOLTS</Text>
-			<Condition>
-				<Lower>
-					<Simvar name="ELECTRICAL MAIN BUS VOLTAGE" unit="volts"/>
-					<Constant>25</Constant>
-				</Lower>
-			</Condition>
-		</Annunciation>
-
-		<Annunciation>
-			<Type>Caution</Type>
-			<Text>L AUX FUEL E</Text>
-			<Condition>
-				<And>
-					<Simvar name="FUEL TRANSFER PUMP ON:1" unit="Boolean"/>
-					<Equal>
-						<Simvar name="FUEL SELECTED TRANSFER MODE" unit="Enum"/>
-						<Constant>5</Constant>
-					</Equal>
-					<Lower>
-						<Simvar name="FUEL TANK LEFT AUX QUANTITY" unit="gallon"/>
-						<Constant>0.3001</Constant>
-					</Lower>
-				</And>
-			</Condition>
-		</Annunciation>
-		<Annunciation>
-			<Type>Caution</Type>
-			<Text>R AUX FUEL E</Text>
-			<Condition>
-				<And>
-					<Simvar name="FUEL TRANSFER PUMP ON:2" unit="Boolean"/>
-					<Equal>
-						<Simvar name="FUEL SELECTED TRANSFER MODE" unit="Enum"/>
-						<Constant>5</Constant>
-					</Equal>
-					<Lower>
-						<Simvar name="FUEL TANK RIGHT AUX QUANTITY" unit="gallon"/>
-						<Constant>0.3001</Constant>
-					</Lower>
-				</And>
-			</Condition>
-		</Annunciation>
+		<Gauge>
+			<Type>Horizontal</Type>
+			<ID>FuelFlow_Gauge</ID>
+			<Title>FUEL</Title>
+			<Unit>GPH</Unit>
+			<Minimum>0</Minimum>
+			<Maximum>20</Maximum>
+			<Style>
+				<ValuePos>End</ValuePos>
+			</Style>
+			<Value>
+				<Simvar name="ENG FUEL FLOW GPH:1" unit="gallons per hour"/>
+			</Value>
+			<BeginText></BeginText>
+			<EndText></EndText>
+		</Gauge>
 		
-		<Annunciation>
-			<Type>Caution</Type>
-			<Text>PITOT FAIL</Text>
-			<Condition>
-				<Simvar name="PARTIAL PANEL PITOT" unit="Boolean"/>
-			</Condition>
-		</Annunciation>
-		<Annunciation>
-			<Type>Caution</Type>
-			<Text>PITOT HT OFF</Text>
-			<Condition>
-				<Not>
-					<Simvar name="PITOT HEAT" unit="Boolean"/>
-				</Not>
-			</Condition>
-		</Annunciation>
-		
-		<Annunciation>
-			<Type>Caution</Type>
-			<Text>CHECK GEAR</Text>
-			<Condition>
+		<Gauge>
+			<Type>Horizontal</Type>
+			<ID>OilPsi_Gauge</ID>
+			<Title>OIL</Title>
+			<Unit>PSI</Unit>
+			<Minimum>0</Minimum>
+			<Maximum>120</Maximum> <!-- Not Sure -->
+			<Style>
+				<ValuePos>End</ValuePos>
+			</Style>
+			<Value>
+				<Simvar name="GENERAL ENG OIL PRESSURE:1" unit="psi"/>
+			</Value>
+			<ColorZone>
+				<Color>yellow</Color>
+				<Begin>95</Begin>
+				<End>115</End>
+			</ColorZone>
+			<ColorZone>
+				<Color>green</Color>
+				<Begin>55</Begin>
+				<End>95</End>
+			</ColorZone>
+			<ColorZone>
+				<Color>yellow</Color>
+				<Begin>25</Begin>
+				<End>55</End>
+			</ColorZone>
+			<ColorZone>
+				<Color>red</Color>
+				<Begin>0</Begin>
+				<End>25</End>
+			</ColorZone>
+			<ColorLine>
+				<Color>red</Color>
+				<Position>116</Position>
+			</ColorLine>
+			<BeginText></BeginText>
+			<EndText></EndText>
+			<RedBlink>
 				<Or>
-					<And>
-						<Simvar name="SIM ON GROUND" unit="Boolean"/>
-						<Not>
-							<Simvar name="GEAR HANDLE POSITION" unit="Boolean"/>
-						</Not>
-					</And>
-					<And>
-						<Greater>
-							<Simvar name="GEAR CENTER POSITION" unit="Percent"/>
-							<Constant>0</Constant>
-						</Greater>
-						<Lower>
-							<Simvar name="GEAR CENTER POSITION" unit="Percent"/>
-							<Constant>100</Constant>
-						</Lower>
-					</And>
-					<And>
-						<Greater>
-							<Simvar name="GEAR LEFT POSITION" unit="Percent"/>
-							<Constant>0</Constant>
-						</Greater>
-						<Lower>
-							<Simvar name="GEAR LEFT POSITION" unit="Percent"/>
-							<Constant>100</Constant>
-						</Lower>
-					</And>
-					<And>
-						<Greater>
-							<Simvar name="GEAR RIGHT POSITION" unit="Percent"/>
-							<Constant>0</Constant>
-						</Greater>
-						<Lower>
-							<Simvar name="GEAR RIGHT POSITION" unit="Percent"/>
-							<Constant>100</Constant>
-						</Lower>
-					</And>
+					<Greater>
+						<Simvar name="GENERAL ENG OIL PRESSURE:1" unit="psi"/>
+						<Constant>115</Constant>
+					</Greater>
+					<Lower>
+						<Simvar name="GENERAL ENG OIL PRESSURE:1" unit="psi"/>
+						<Constant>25</Constant>
+					</Lower>
 				</Or>
-			</Condition>
-		</Annunciation>
+			</RedBlink>
+		</Gauge>
+		
+		<Gauge>
+			<Type>Horizontal</Type>
+			<ID>OilTemp_Gauge</ID>
+			<Title>OIL</Title>
+			<Unit>TEMP</Unit>
+			<Minimum>0</Minimum>
+			<Maximum>250</Maximum> <!-- Not Sure -->
+			<Style>
+				<ValuePos>End</ValuePos>
+			</Style>
+			<Value>
+				<Simvar name="GENERAL ENG OIL TEMPERATURE:1" unit="farenheit"/>
+			</Value>
+			<ColorZone>
+				<Color>yellow</Color>
+				<Begin>0</Begin>
+				<End>100</End>
+			</ColorZone>
+			<ColorZone>
+				<Color>green</Color>
+				<Begin>100</Begin>
+				<End>245</End>
+			</ColorZone>
+			<ColorLine>
+				<Color>red</Color>
+				<Position>246</Position>
+			</ColorLine>
+			<BeginText></BeginText>
+			<EndText></EndText>
+			<RedBlink>
+				<Greater>
+					<Simvar name="GENERAL ENG OIL PRESSURE:1" unit="psi"/>
+					<Constant>245</Constant>
+				</Greater>
+			</RedBlink>
+		</Gauge>
+	
+		<Gauge>
+			<Type>Horizontal</Type>
+			<ID>FuelPress_Gauge</ID>
+			<Title>FUEL</Title>
+			<Unit>PSI</Unit>
+			<Minimum>0</Minimum>
+			<Maximum>10</Maximum> <!-- Not Sure -->
+			<Style>
+				<ValuePos>End</ValuePos>
+			</Style>
+			<Value>
+				<Simvar name="GENERAL ENG FUEL PRESSURE:1" unit="psi"/>
+			</Value>
+			<BeginText></BeginText>
+			<EndText></EndText>
+		</Gauge>
+		
+		<Text>
+			<Left>CHT °F</Left>
+			<Right id="CHT">
+				<ToFixed precision="0">
+					<Simvar name="ENG CYLINDER HEAD TEMPERATURE:1" unit="farenheit"/>
+				</ToFixed>
+			</Right>
+		</Text>
+		
+		<Text>
+			<Left>EGT °F</Left>
+			<Right id="EGT">
+				<ToFixed precision="0">
+					<Simvar name="GENERAL ENG EXHAUST GAS TEMPERATURE:1" unit="farenheit"/>
+				</ToFixed>
+			</Right>
+		</Text>
+		
+		
+	</EngineDisplay>
+	
+  <!--Annunciations -->
+	
+  <Annunciations>
+    
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>OIL PRESSURE</Text>
+      <Condition>
+		<LowerEqual>
+			<Simvar name="GENERAL ENG OIL PRESSURE:1" unit="psi"/>
+			<Constant>20</Constant>
+		</LowerEqual>
+      </Condition>
+    </Annunciation>
+    
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>LOW VOLTS</Text>
+      <Condition>
+        <LowerEqual>
+          <Simvar name="ELECTRICAL MAIN BUS VOLTAGE:3" unit="volts"/>
+          <Constant>25.5</Constant>
+        </LowerEqual>
+      </Condition>
+    </Annunciation>
+    
+    <Annunciation>
+      <Type>Warning</Type>
+      <Text>HIGH VOLTS</Text>
+      <Condition>
+        <Greater>
+          <Simvar name="ELECTRICAL MAIN BUS VOLTAGE:3" unit="volts"/>
+          <Constant>32</Constant>
+        </Greater>
+      </Condition>
+    </Annunciation>
+    
+	<Annunciation>
+      <Type>Caution</Type>
+      <Text>STBY BATT</Text>
+      <Condition>
+		<Timer time="10">
+			<Greater>
+				<Simvar name="ELECTRICAL BATTERY LOAD:2" unit="amps"/>
+				<Constant>0.5</Constant>
+			</Greater>
+		</Timer>
+      </Condition>
+    </Annunciation>
+	
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>LOW VACUUM</Text>
+      <Condition>
+		<Lower>
+			<Simvar name="SUCTION PRESSURE" unit="inch of mercury"/>
+			<Constant>3.5</Constant>
+		</Lower>
+      </Condition>
+    </Annunciation>
 
-	</Annunciations>
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>LOW FUEL R</Text>
+      <Condition>
+        <Lower>
+          <Simvar name="FUEL RIGHT QUANTITY" unit="gallon"/>
+          <Constant>5</Constant>
+        </Lower>
+      </Condition>
+    </Annunciation>
+
+    <Annunciation>
+      <Type>Caution</Type>
+      <Text>LOW FUEL L</Text>
+      <Condition>
+        <Lower>
+          <Simvar name="FUEL LEFT QUANTITY" unit="gallon"/>
+          <Constant>5</Constant>
+        </Lower>
+      </Condition>
+    </Annunciation>
+    
+  </Annunciations>
 	
 	<!-- Voices Alerts -->
   
-	<VoicesAlerts>
-	
+  <VoicesAlerts>
+  
 	<Alert>
 		<Type>SoundOnly</Type>
 		<SoundEvent>aural_500ft</SoundEvent>
@@ -327,62 +419,7 @@
 				</Not>
 			</And>
 		</Condition>
-	</Alert>
-	
-	<Alert>
-		<Type>Caution</Type>
-		<ShortText>TERRAIN</ShortText>
-		<LongText>DONT' SINK</LongText>
-		<SoundEvent>aural_dont_sink</SoundEvent>
-		<Condition>
-			<And>
-				<Lower>
-					<DistanceFromOrigin/>
-					<Constant>5</Constant>
-				</Lower>
-				<Lower>
-					<HeadingChangeFromDeparture/>
-					<Constant>110</Constant>
-				</Lower>
-				<Or>
-					<LinearMultiPoint>
-						<Table>
-							<ReferencePoints>0,500,7000</ReferencePoints>
-							<Maximums>50,700,700</Maximums>
-								<Minimums>50,50,50</Minimums>
-						</Table>
-						<Param>
-							<Multiply>
-								<Simvar name="VERTICAL SPEED" unit="feet per minute"/>
-								<Constant>-1</Constant>
-							</Multiply>
-						</Param>
-						<Param>
-							<Simvar name="PLANE ALT ABOVE GROUND" unit="feet"/>
-						</Param>
-					</LinearMultiPoint>
-					<LinearMultiPoint>
-						<Table>
-							<ReferencePoints>10,70,150</ReferencePoints>
-							<Maximums>50,700,700</Maximums>
-								<Minimums>50,50,50</Minimums>
-						</Table>
-						<Param>
-							<Substract>
-								<MaxSinceStart>
-									<Simvar name="PLANE ALTITUDE" unit="feet"/>
-								</MaxSinceStart>
-								<Simvar name="PLANE ALTITUDE" unit="feet"/>
-							</Substract>
-						</Param>
-						<Param>
-							<Simvar name="PLANE ALT ABOVE GROUND" unit="feet"/>
-						</Param>
-					</LinearMultiPoint>
-				</Or>
-			</And>
-		</Condition>
-	</Alert>
+	</Alert>	
 	
 	<Alert>
 		<Type>SoundOnly</Type>
@@ -438,335 +475,4 @@
 
   </VoicesAlerts>
 	
-	<!-- Engine Display -->
-	
-	<EngineDisplay>
-	
-		<Gauge>
-			<Type>DoubleVertical</Type>
-			<Style>
-				<Height>70</Height>
-				<TextIncrement>10</TextIncrement>
-			</Style>
-			<ID>Piston_LoadGauge</ID>
-			<Title>LOAD</Title>
-			<Unit></Unit>
-			<Minimum>0</Minimum>
-			<Maximum>100</Maximum>
-			<Value>
-				<Max>
-					<Min>
-						<Multiply>
-							<Divide>
-								<Multiply>
-									<Simvar name="ENG TORQUE:1" unit="Foot pounds"/>
-									<Divide>
-										<Simvar name="GENERAL ENG RPM:1" unit="rpm"/>
-										<Constant>5252</Constant>
-									</Divide>
-									<Constant>550</Constant>
-								</Multiply>
-								<Divide>
-									<Gamevar name="AIRCRAFT MAX RATED HP" unit="ft lb per second"/>
-									<Simvar name="NUMBER OF ENGINES" unit="number"/>
-								</Divide>
-							</Divide>
-							<Constant>100</Constant>
-						</Multiply>
-						<Constant>100</Constant>
-					</Min>
-					<Constant>0</Constant>
-				</Max>
-			</Value>
-			<Value2>
-				<Max>
-					<Min>
-						<Multiply>
-							<Divide>
-								<Multiply>
-									<Simvar name="ENG TORQUE:2" unit="Foot pounds"/>
-									<Divide>
-										<Simvar name="GENERAL ENG RPM:2" unit="rpm"/>
-										<Constant>5252</Constant>
-									</Divide>
-									<Constant>550</Constant>
-								</Multiply>
-								<Divide>
-									<Gamevar name="AIRCRAFT MAX RATED HP" unit="ft lb per second"/>
-									<Simvar name="NUMBER OF ENGINES" unit="number"/>
-								</Divide>
-							</Divide>
-							<Constant>100</Constant>
-						</Multiply>
-						<Constant>100</Constant>
-					</Min>
-					<Constant>0</Constant>
-				</Max>
-			</Value2>
-			<ColorZone>
-				<Color>yellow</Color>
-				<Begin>95</Begin>
-				<End>100</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>green</Color>
-				<Begin>0</Begin>
-				<End>95</End>
-			</ColorZone>
-			<GraduationLength text="True">20</GraduationLength>
-			<BeginText>%</BeginText>
-		</Gauge>
-		
-		<Gauge>
-			<Type>DoubleVertical</Type>
-			<Style>
-				<Height>70</Height>
-			</Style>
-			<ID>Piston_RPMGauge</ID>
-			<Title></Title>
-			<Unit>RPM</Unit>
-			<Minimum>0</Minimum>
-			<Maximum>3000</Maximum>
-			<Value>
-				<Simvar name="PROP RPM:1" unit="rpm"/>
-			</Value>
-			<Value2>
-				<Simvar name="PROP RPM:2" unit="rpm"/>
-			</Value2>
-			<ColorZone>
-				<Color>green</Color>
-				<Begin>0</Begin>
-				<End>2325</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>yellow</Color>
-				<Begin>2325</Begin>
-				<End>2375</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>red</Color>
-				<Begin>2375</Begin>
-				<End>3000</End>
-			</ColorZone>
-			<GraduationLength text="True">600</GraduationLength>
-		</Gauge>
-		
-		<Text>
-			<Center>FUEL FLOW</Center>
-		</Text>
-		
-		<Text>
-			<Left>
-				<ToFixed precision="1">
-					<Simvar name="ENG FUEL FLOW GPH:1" unit="gallons per hour"/>
-				</ToFixed>
-			</Left>
-			<Center>GPH</Center>
-			<Right>
-				<ToFixed precision="1">
-					<Simvar name="ENG FUEL FLOW GPH:2" unit="gallons per hour"/>
-				</ToFixed>
-			</Right>
-		</Text>
-		
-		<Gauge>
-			<Type>DoubleHorizontal</Type>
-			<ID>Piston_OilTempGauge</ID>
-			<Title>OIL TEMP</Title>
-			<Unit></Unit>
-			<CursorText>L</CursorText>
-			<CursorText2>R</CursorText2>
-			<Minimum>-40</Minimum> <!-- Not Sure -->
-			<Maximum>150</Maximum> <!-- Not Sure -->
-			<Value>
-				<Simvar name="GENERAL ENG OIL TEMPERATURE:1" unit="celsius"/>
-			</Value>
-			<Value2>
-				<Simvar name="GENERAL ENG OIL TEMPERATURE:2" unit="celsius"/>
-			</Value2>
-			<ColorZone>
-				<Color>red</Color>
-				<Begin>-40</Begin> <!-- Not Sure -->
-				<End>-30</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>yellow</Color>
-				<Begin>-30</Begin>
-				<End>50</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>green</Color>
-				<Begin>50</Begin>
-				<End>135</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>yellow</Color>
-				<Begin>135</Begin>
-				<End>139</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>red</Color>
-				<Begin>139</Begin>
-				<End>150</End> <!-- Not Sure -->
-			</ColorZone>
-			<BeginText></BeginText>
-			<EndText></EndText>
-		</Gauge>
-		
-		<Gauge>
-			<Type>DoubleHorizontal</Type>
-			<ID>Piston_OilPressGauge</ID>
-			<Title>OIL PRESS</Title>
-			<Unit></Unit>
-			<CursorText>L</CursorText>
-			<CursorText2>R</CursorText2>
-			<Minimum>0</Minimum> <!-- Not Sure -->
-			<Maximum>7</Maximum> <!-- Not Sure -->
-			<Value>
-				<Simvar name="GENERAL ENG OIL PRESSURE:1" unit="bar"/>
-			</Value>
-			<Value2>
-				<Simvar name="GENERAL ENG OIL PRESSURE:2" unit="bar"/>
-			</Value2>
-			<ColorZone>
-				<Color>red</Color>
-				<Begin>0</Begin> <!-- Not Sure -->
-				<End>0.9</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>yellow</Color>
-				<Begin>0.9</Begin>
-				<End>2.5</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>green</Color>
-				<Begin>2.5</Begin>
-				<End>6</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>yellow</Color>
-				<Begin>6</Begin>
-				<End>6.5</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>red</Color>
-				<Begin>6.5</Begin>
-				<End>7</End> <!-- Not Sure -->
-			</ColorZone>
-			<BeginText></BeginText>
-			<EndText></EndText>
-		</Gauge>
-		
-		<Gauge>
-			<Type>DoubleHorizontal</Type>
-			<ID>Piston_CoolantTempGauge</ID>
-			<Title>COOLANT TEMP</Title>
-			<Unit></Unit>
-			<CursorText>L</CursorText>
-			<CursorText2>R</CursorText2>
-			<Minimum>-40</Minimum> <!-- Not Sure -->
-			<Maximum>150</Maximum> <!-- Not Sure -->
-			<Value>
-				<Simvar name="RECIP ENG RADIATOR TEMPERATURE:1" unit="celsius"/>
-			</Value>
-			<Value2>
-				<Simvar name="RECIP ENG RADIATOR TEMPERATURE:2" unit="celsius"/>
-			</Value2>
-			<ColorZone>
-				<Color>red</Color>
-				<Begin>-40</Begin> <!-- Not Sure -->
-				<End>-30</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>yellow</Color>
-				<Begin>-30</Begin>
-				<End>60</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>green</Color>
-				<Begin>60</Begin>
-				<End>95</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>yellow</Color>
-				<Begin>95</Begin>
-				<End>100</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>red</Color>
-				<Begin>100</Begin>
-				<End>150</End> <!-- Not Sure -->
-			</ColorZone>
-			<BeginText></BeginText>
-			<EndText></EndText>
-		</Gauge>
-		
-		<Gauge>
-			<Type>DoubleHorizontal</Type>
-			<ID>Piston_FuelTempGauge</ID>
-			<Title>FUEL TEMP</Title>
-			<Unit></Unit>
-			<CursorText>L</CursorText>
-			<CursorText2>R</CursorText2>
-			<Minimum>-40</Minimum> <!-- Not Sure -->
-			<Maximum>100</Maximum> <!-- Not Sure -->
-			<Value>
-				30
-			</Value>
-			<Value2>
-				30
-			</Value2>
-			<ColorZone>
-				<Color>red</Color>
-				<Begin>-40</Begin> <!-- Not Sure -->
-				<End>-30</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>green</Color>
-				<Begin>-30</Begin>
-				<End>55</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>yellow</Color>
-				<Begin>55</Begin>
-				<End>60</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>red</Color>
-				<Begin>60</Begin>
-				<End>100</End> <!-- Not Sure -->
-			</ColorZone>
-			<BeginText></BeginText>
-			<EndText></EndText>
-		</Gauge>
-		
-		<Gauge>
-			<Type>DoubleHorizontal</Type>
-			<ID>Piston_FuelGauge</ID>
-			<Title>FUEL QTY</Title>
-			<Unit>GAL</Unit>
-			<CursorText>L</CursorText>
-			<CursorText2>R</CursorText2>
-			<Minimum>0</Minimum>
-			<Maximum>25</Maximum>
-			<Value>
-				<Simvar name="FUEL TANK LEFT MAIN QUANTITY" unit="gallons"/>
-			</Value>
-			<Value2>
-				<Simvar name="FUEL TANK RIGHT MAIN QUANTITY" unit="gallons"/>
-			</Value2>
-			<ColorZone>
-				<Color>red</Color>
-				<Begin>0</Begin>
-				<End>1</End>
-			</ColorZone>
-			<ColorZone>
-				<Color>green</Color>
-				<Begin>1</Begin>
-				<End>25</End>
-			</ColorZone>
-			<GraduationLength text="True">5</GraduationLength>
-		</Gauge>
-	</EngineDisplay>
-
 </PlaneHTMLConfig>

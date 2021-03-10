@@ -154,146 +154,8 @@
 	</Behaviors>
 	
 	<!-- CUSTOM ANIMATIONS ##############################-->
-	
-	<Animation name="switch_master_battery" guid="f3d3989b-4c1c-435a-8e82-a140bde1a21c" length="50" type="Sim" typeParam2="switch_master_battery" typeParam="AutoPlay" />
-    <PartInfo>
-        <Name>switch_master_battery</Name>
-        <AnimLength>50</AnimLength>
-        <Animation>
-            <Parameter>
-                <Sim>
-                    <Variable>ELECTRICAL MASTER BATTERY</Variable>
-                    <Units>bool</Units>
-                    <Scale>50</Scale>
-                </Sim>
-                <Lag>50</Lag>
-            </Parameter>
-        </Animation>
-        <MouseRect>
-            <Cursor>Hand</Cursor>
-            <HelpID>HELPID_GAUGE_BATTERY_SWITCH</HelpID>
-            <TooltipID>TOOLTIPTEXT_BATTERY_SWITCH</TooltipID>
-        <CallbackCode>
-			1 (>K:TOGGLE_MASTER_BATTERY)
-        </CallbackCode>
-        </MouseRect>
-    </PartInfo>
-<Animation name="switch_master_alternator" guid="b33dd60d-5e0a-4040-9729-6acf5defcf2a" length="50" type="Sim" typeParam2="switch_master_alternator" typeParam="AutoPlay" />
-    <PartInfo>
-        <Name>switch_master_alternator</Name>
-        <AnimLength>50</AnimLength>
-        <Animation>
-            <Parameter>
-                <Sim>
-                    <Variable>GENERAL ENG MASTER ALTERNATOR:1</Variable>
-                    <Units>bool</Units>
-                    <Scale>50</Scale>
-                </Sim>
-                <Lag>400</Lag>
-            </Parameter>
-        </Animation>
-        <MouseRect>
-            <Cursor>Hand</Cursor>
-            <HelpID>HELPID_GAUGE_ALTERNATOR_SWITCH</HelpID>
-            <TooltipID>TOOLTIPTEXT_ALTERNATOR_SWITCH</TooltipID>
-            <EventID>TOGGLE_MASTER_ALTERNATOR</EventID>
-        </MouseRect>
-    </PartInfo>
-<Animation name="switch_landing_light" guid="329ea983-4191-41bd-b9e1-9d4fcf6f3264" length="50" type="Sim" typeParam2="switch_landing_light" typeParam="AutoPlay" />
-    <PartInfo>
-        <Name>switch_landing_light</Name>
-        <AnimLength>50</AnimLength>
-        <Animation>
-            <Parameter>
-                <Sim>
-                    <Variable>LIGHT LANDING</Variable>
-                    <Units>bool</Units>
-                    <Scale>50</Scale>
-                </Sim>
-                <Lag>400</Lag>
-            </Parameter>
-        </Animation>
-        <MouseRect>
-            <Cursor>Hand</Cursor>
-            <HelpID>HELPID_GAUGE_LIGHT_SWITCH_LANDING</HelpID>
-            <TooltipID>TOOLTIPTEXT_LIGHT_SWITCH_LANDING</TooltipID>
-      		<CallbackCode>
-		 	1 (&gt;K:LANDING_LIGHTS_TOGGLE)
-      		</CallbackCode>
-        </MouseRect>
-    </PartInfo>
-<Animation name="switch_nav_light" guid="dc208eea-ccf9-4903-9cd8-a9287f54853e" length="50" type="Sim" typeParam2="switch_nav_light" typeParam="AutoPlay" />
-    <PartInfo>
-        <Name>switch_nav_light</Name>
-        <AnimLength>50</AnimLength>
-        <Animation>
-            <Parameter>
-                <Sim>
-                    <Variable>LIGHT NAV</Variable>
-                    <Units>bool</Units>
-                    <Scale>50</Scale>
-                </Sim>
-                <Lag>400</Lag>
-            </Parameter>
-        </Animation>
-        <MouseRect>
-            <Cursor>Hand</Cursor>
-            <HelpID>HELPID_GAUGE_LIGHT_SWITCH_NAV</HelpID>
-            <TooltipID>TOOLTIPTEXT_LIGHT_SWITCH_NAV</TooltipID>
-      		<CallbackCode>
-        	1 (&gt;K:TOGGLE_NAV_LIGHTS)
-      		</CallbackCode>
-        </MouseRect>
-    </PartInfo>
-<Animation name="switch_pitot_heat" guid="eb600eca-5ab3-49ac-9fa2-8c4b9fce167d" length="50" type="Sim" typeParam2="switch_pitot_heat" typeParam="AutoPlay" />
-     <PartInfo>
-        <Name>switch_pitot_heat</Name>
-        <AnimLength>50</AnimLength>
-        <Animation>
-            <Parameter>
-                <Sim>
-                    <Variable>PITOT HEAT</Variable>
-                    <Units>bool</Units>
-                    <Scale>50</Scale>
-                </Sim>
-                <Lag>400</Lag>
-            </Parameter>
-        </Animation>
-        <MouseRect>
-            <Cursor>Hand</Cursor>
-            <HelpID>HELPID_GAUGE_PITOT_HEAT_SWITCH</HelpID>
-            <TooltipID>TOOLTIPTEXT_PITOT_HEAT_SWITCH</TooltipID>
-            <EventID>PITOT_HEAT_TOGGLE</EventID>
-        </MouseRect>
-    </PartInfo>
-<Animation name="lever_flap" guid="bf56b73b-6d0d-4e30-9bcc-2f360d40f191" length="100" type="Sim" typeParam2="lever_flap" typeParam="AutoPlay" />
-    <PartInfo>
-        <Name>lever_flap</Name>
-        <AnimLength>100</AnimLength>
-        <Animation>
-            <Parameter>
-                <Sim>
-                    <Variable>FLAPS HANDLE PERCENT</Variable>
-                    <Units>percent</Units>
-                </Sim>
-                <Lag>300</Lag>
-            </Parameter>
-        </Animation>
-        <MouseRect>
-            <Cursor>Hand</Cursor>
-            <HelpID>HELPID_GAUGE_FLAPS_SWITCH</HelpID>
-            <TooltipID>TOOLTIPTEXT_FLAPS_SWITCH</TooltipID>
-            <MouseFlags>LeftSingle+LeftDrag+Wheel</MouseFlags>
-            <CallbackJumpDragging>
-                <YMovement>
-                    <Delta>30</Delta>
-                    <EventIdInc>FLAPS_INCR</EventIdInc>
-                    <EventIdDec>FLAPS_DECR</EventIdDec>
-                </YMovement>
-            </CallbackJumpDragging>
-        </MouseRect>
-    </PartInfo>
-<Animation name="lever_landing_gear" guid="72288f6e-0f97-498c-a229-561545cf8905" length="100" type="Sim" typeParam2="lever_landing_gear" typeParam="AutoPlay" />
+
+	<Animation name="lever_landing_gear" guid="7adbeccc-e134-4313-bda7-5caf9f48602a" length="100" type="Sim" typeParam2="lever_landing_gear" typeParam="AutoPlay" />
     <PartInfo>
         <Name>lever_landing_gear</Name>
         <AnimLength>100</AnimLength>
@@ -320,10 +182,155 @@
             </CallbackJumpDragging>
         </MouseRect>
     </PartInfo>
-<Animation name="switch_starter" guid="ee5a3d10-6a9c-4eef-ba42-f5a6f46ee63a" length="50" type="Sim" typeParam2="switch_starter" typeParam="AutoPlay" />
+
+	<Animation name="lever_flap" guid="08a8c73b-e104-4b90-af54-141ef956ba1e" length="100" type="Sim" typeParam2="lever_flap" typeParam="AutoPlay" />
+    <PartInfo>
+        <Name>lever_flap</Name>
+        <AnimLength>100</AnimLength>
+        <Animation>
+            <Parameter>
+                <Sim>
+                    <Variable>FLAPS HANDLE PERCENT</Variable>
+                    <Units>percent</Units>
+                </Sim>
+                <Lag>300</Lag>
+            </Parameter>
+        </Animation>
+        <MouseRect>
+            <Cursor>Hand</Cursor>
+            <HelpID>HELPID_GAUGE_FLAPS_SWITCH</HelpID>
+            <TooltipID>TOOLTIPTEXT_FLAPS_SWITCH</TooltipID>
+            <MouseFlags>LeftSingle+LeftDrag+Wheel</MouseFlags>
+            <CallbackJumpDragging>
+                <YMovement>
+                    <Delta>30</Delta>
+                    <EventIdInc>FLAPS_INCR</EventIdInc>
+                    <EventIdDec>FLAPS_DECR</EventIdDec>
+                </YMovement>
+            </CallbackJumpDragging>
+        </MouseRect>
+    </PartInfo>
+
+	<Animation name="switch_landing_light" guid="f3bd856b-eacb-4486-a0e5-482a47b671a4" length="100" type="Sim" typeParam2="switch_landing_light" typeParam="AutoPlay" />
+    <PartInfo>
+        <Name>switch_landing_light</Name>
+        <AnimLength>100</AnimLength>
+        <Animation>
+            <Parameter>
+                <Sim>
+                    <Variable>LIGHT LANDING</Variable>
+                    <Units>bool</Units>
+                    <Scale>50</Scale>
+                </Sim>
+                <Lag>400</Lag>
+            </Parameter>
+        </Animation>
+        <MouseRect>
+            <Cursor>Hand</Cursor>
+            <HelpID>HELPID_GAUGE_LIGHT_SWITCH_LANDING</HelpID>
+            <TooltipID>TOOLTIPTEXT_LIGHT_SWITCH_LANDING</TooltipID>
+      		<CallbackCode>
+		 	1 (&gt;K:LANDING_LIGHTS_TOGGLE)
+      		</CallbackCode>
+        </MouseRect>
+    </PartInfo>
+
+	<Animation name="switch_nav_light" guid="90c74897-f504-450d-877d-540e0349035a" length="100" type="Sim" typeParam2="switch_nav_light" typeParam="AutoPlay" />
+    <PartInfo>
+        <Name>switch_nav_light</Name>
+        <AnimLength>100</AnimLength>
+        <Animation>
+            <Parameter>
+                <Sim>
+                    <Variable>LIGHT NAV</Variable>
+                    <Units>bool</Units>
+                    <Scale>50</Scale>
+                </Sim>
+                <Lag>400</Lag>
+            </Parameter>
+        </Animation>
+        <MouseRect>
+            <Cursor>Hand</Cursor>
+            <HelpID>HELPID_GAUGE_LIGHT_SWITCH_NAV</HelpID>
+            <TooltipID>TOOLTIPTEXT_LIGHT_SWITCH_NAV</TooltipID>
+      		<CallbackCode>
+        	1 (&gt;K:TOGGLE_NAV_LIGHTS)
+      		</CallbackCode>
+        </MouseRect>
+    </PartInfo>
+	
+	<Animation name="switch_pitot_heat" guid="9b12a7e9-e17b-423f-9def-bb499cb422df" length="100" type="Sim" typeParam2="switch_pitot_heat" typeParam="AutoPlay" />
+    <PartInfo>
+        <Name>switch_pitot_heat</Name>
+        <AnimLength>100</AnimLength>
+        <Animation>
+            <Parameter>
+                <Sim>
+                    <Variable>PITOT HEAT</Variable>
+                    <Units>bool</Units>
+                    <Scale>50</Scale>
+                </Sim>
+                <Lag>400</Lag>
+            </Parameter>
+        </Animation>
+        <MouseRect>
+            <Cursor>Hand</Cursor>
+            <HelpID>HELPID_GAUGE_PITOT_HEAT_SWITCH</HelpID>
+            <TooltipID>TOOLTIPTEXT_PITOT_HEAT_SWITCH</TooltipID>
+            <EventID>PITOT_HEAT_TOGGLE</EventID>
+        </MouseRect>
+    </PartInfo>
+
+	<Animation name="switch_master_alternator" guid="c816c2bc-7f84-44cb-9c49-54e4676102c7" length="100" type="Sim" typeParam2="switch_master_alternator" typeParam="AutoPlay" />
+    <PartInfo>
+        <Name>switch_master_alternator</Name>
+        <AnimLength>100</AnimLength>
+        <Animation>
+            <Parameter>
+                <Sim>
+                    <Variable>GENERAL ENG MASTER ALTERNATOR:1</Variable>
+                    <Units>bool</Units>
+                    <Scale>50</Scale>
+                </Sim>
+                <Lag>400</Lag>
+            </Parameter>
+        </Animation>
+        <MouseRect>
+            <Cursor>Hand</Cursor>
+            <HelpID>HELPID_GAUGE_ALTERNATOR_SWITCH</HelpID>
+            <TooltipID>TOOLTIPTEXT_ALTERNATOR_SWITCH</TooltipID>
+            <EventID>TOGGLE_MASTER_ALTERNATOR</EventID>
+        </MouseRect>
+    </PartInfo>
+	
+	<Animation name="switch_master_battery" guid="f3d3989b-4c1c-435a-8e82-a140bde1a21c" length="100" type="Sim" typeParam2="switch_master_battery" typeParam="AutoPlay" />
+    <PartInfo>
+        <Name>switch_master_battery</Name>
+        <AnimLength>100</AnimLength>
+        <Animation>
+            <Parameter>
+                <Sim>
+                    <Variable>ELECTRICAL MASTER BATTERY</Variable>
+                    <Units>bool</Units>
+                    <Scale>50</Scale>
+                </Sim>
+                <Lag>400</Lag>
+            </Parameter>
+        </Animation>
+        <MouseRect>
+            <Cursor>Hand</Cursor>
+            <HelpID>HELPID_GAUGE_BATTERY_SWITCH</HelpID>
+            <TooltipID>TOOLTIPTEXT_BATTERY_SWITCH</TooltipID>
+        <CallbackCode>
+		1 (&gt;K:TOGGLE_MASTER_BATTERY)
+        </CallbackCode>
+        </MouseRect>
+    </PartInfo>
+	
+	<Animation name="switch_starter" guid="1cbe6d66-889e-4111-b64d-25d4c53b3551" length="100" type="Sim" typeParam2="switch_starter" typeParam="AutoPlay" />
     <PartInfo>
         <Name>switch_starter</Name>
-        <AnimLength>50</AnimLength>
+        <AnimLength>100</AnimLength>
         <Animation>
             <Parameter>
                 <Sim>
@@ -341,4 +348,24 @@
             <EventID>TOGGLE_STARTER1</EventID>
         </MouseRect>
     </PartInfo>
+	
+	<Animation name="canopyanimation" guid="b66386ce-a1f4-408b-8deb-382b9d8f7b34" length="200" type="Sim" typeParam2="canopyanimation" typeParam="AutoPlay" />
+	<PartInfo>
+        <Name>canopyanimation</Name>
+        <AnimLength>200</AnimLength>
+        <Animation>
+            <Parameter>
+                 <Code>(L:DOORS_OPEN_ALL, bool) 50 *</Code>
+                <Lag>20</Lag>
+        </Parameter>
+        </Animation>
+        <MouseRect>
+            <Cursor>Hand</Cursor>
+            <HelpID>HELPID_CANOPY_HANDLE</HelpID>
+            <TooltipID>TOOLTIPTEXT_CANOPY_HANDLE</TooltipID>
+            <CallbackCode>(L:DOORS_OPEN_ALL, bool) ! (>L:DOORS_OPEN_ALL, bool)
+        </CallbackCode>
+        </MouseRect>
+    </PartInfo>
+	
 </ModelInfo>

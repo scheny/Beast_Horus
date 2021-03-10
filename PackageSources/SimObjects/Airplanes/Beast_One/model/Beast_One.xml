@@ -349,4 +349,23 @@
         </MouseRect>
     </PartInfo>
 	
+	<Animation name="canopyanimation" guid="b66386ce-a1f4-408b-8deb-382b9d8f7b34" length="200" type="Sim" typeParam2="canopyanimation" typeParam="AutoPlay" />
+	<PartInfo>
+        <Name>canopyanimation</Name>
+        <AnimLength>200</AnimLength>
+        <Animation>
+            <Parameter>
+                 <Code>(L:DOORS_OPEN_ALL, bool) 50 *</Code>
+                <Lag>20</Lag>
+        </Parameter>
+        </Animation>
+        <MouseRect>
+            <Cursor>Hand</Cursor>
+            <HelpID>HELPID_CANOPY_HANDLE</HelpID>
+            <TooltipID>TOOLTIPTEXT_CANOPY_HANDLE</TooltipID>
+            <CallbackCode>(L:DOORS_OPEN_ALL, bool) ! (>L:DOORS_OPEN_ALL, bool)
+        </CallbackCode>
+        </MouseRect>
+    </PartInfo>
+	
 </ModelInfo>

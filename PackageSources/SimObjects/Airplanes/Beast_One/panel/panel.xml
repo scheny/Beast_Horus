@@ -303,7 +303,7 @@
       <Text>LOW VOLTS</Text>
       <Condition>
         <LowerEqual>
-          <Simvar name="ELECTRICAL MAIN BUS VOLTAGE:3" unit="volts"/>
+          <Simvar name="ELECTRICAL MAIN BUS VOLTAGE:1" unit="volts"/>
           <Constant>25.6</Constant>
         </LowerEqual>
       </Condition>
@@ -314,7 +314,7 @@
       <Text>HIGH VOLTS</Text>
       <Condition>
         <Greater>
-          <Simvar name="ELECTRICAL MAIN BUS VOLTAGE:3" unit="volts"/>
+          <Simvar name="ELECTRICAL MAIN BUS VOLTAGE:1" unit="volts"/>
           <Constant>29.2</Constant>
         </Greater>
       </Condition>

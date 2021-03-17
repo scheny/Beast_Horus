@@ -1,11 +1,6 @@
 {
   "content": [
     {
-      "path": "ContentInfo/beast-one/Beast_One.jpg",
-      "size": 35537,
-      "date": 132548827950000000
-    },
-    {
       "path": "ContentInfo/beast-one/Thumbnail.jpg",
       "size": 10243,
       "date": 132604100685603965
@@ -13,82 +8,82 @@
     {
       "path": "de-DE.locPak",
       "size": 2039,
-      "date": 132599771073186659
+      "date": 132604930013940682
     },
     {
       "path": "de-DE.locUidPak",
       "size": 2086,
-      "date": 132599771073322335
+      "date": 132604930014150729
     },
     {
       "path": "en-US.locPak",
       "size": 1661,
-      "date": 132599771073176658
+      "date": 132604930013890673
     },
     {
       "path": "en-US.locUidPak",
       "size": 1708,
-      "date": 132599771073276684
+      "date": 132604930014100718
     },
     {
       "path": "es-ES.locPak",
       "size": 1891,
-      "date": 132599771073136652
+      "date": 132604930013860663
     },
     {
       "path": "es-ES.locUidPak",
       "size": 1938,
-      "date": 132599771073246677
+      "date": 132604930014050706
     },
     {
       "path": "fr-FR.locPak",
       "size": 1922,
-      "date": 132599771073206662
+      "date": 132604930013960689
     },
     {
       "path": "fr-FR.locUidPak",
       "size": 1969,
-      "date": 132599771073332339
+      "date": 132604930014170737
     },
     {
       "path": "it-IT.locPak",
       "size": 1922,
-      "date": 132599771073216667
+      "date": 132604930013990700
     },
     {
       "path": "it-IT.locUidPak",
       "size": 1969,
-      "date": 132599771073332339
+      "date": 132604930014190738
     },
     {
       "path": "pl-PL.locPak",
       "size": 2237,
-      "date": 132599771073166656
+      "date": 132604930013880672
     },
     {
       "path": "pl-PL.locUidPak",
       "size": 2284,
-      "date": 132599771073246677
+      "date": 132604930014070716
     },
     {
       "path": "pt-BR.locPak",
       "size": 1898,
-      "date": 132599771073126649
+      "date": 132604930013830660
     },
     {
       "path": "pt-BR.locUidPak",
       "size": 1945,
-      "date": 132599771073216667
+      "date": 132604930014020701
     },
     {
       "path": "ru-RU.locPak",
       "size": 2855,
-      "date": 132599771073176658
+      "date": 132604930013910678
     },
     {
       "path": "ru-RU.locUidPak",
       "size": 2902,
-      "date": 132599771073282227
+      "date": 132604930014120726
     },
     {
       "path": "SimObjects/Airplanes/Beast_One/ai.cfg",
@@ -143,7 +138,7 @@
     {
       "path": "SimObjects/Airplanes/Beast_One/engines.cfg",
       "size": 5938,
-      "date": 132600380378974782
+      "date": 132604967121087843
     },
     {
       "path": "SimObjects/Airplanes/Beast_One/Final.flt",
@@ -167,13 +162,13 @@
     },
     {
       "path": "SimObjects/Airplanes/Beast_One/model/Beast_One.bin",
-      "size": 3483796,
-      "date": 132600640324879472
+      "size": 3145858,
+      "date": 132604978701815519
     },
     {
       "path": "SimObjects/Airplanes/Beast_One/model/Beast_One.gltf",
-      "size": 157888,
-      "date": 132600640324899478
+      "size": 157514,
+      "date": 132604978701815519
     },
     {
       "path": "SimObjects/Airplanes/Beast_One/model/Beast_One.xml",
@@ -198,7 +193,7 @@
     {
       "path": "SimObjects/Airplanes/Beast_One/panel/panel.xml",
       "size": 12085,
-      "date": 132599762389627234
+      "date": 132604927935072037
     },
     {
       "path": "SimObjects/Airplanes/Beast_One/runway.FLT",
@@ -227,8 +222,8 @@
     },
     {
       "path": "SimObjects/Airplanes/Beast_One/systems.cfg",
-      "size": 9478,
-      "date": 132600554050217746
+      "size": 9438,
+      "date": 132604959976936516
     },
     {
       "path": "SimObjects/Airplanes/Beast_One/systems.cfg.bak",
@@ -248,12 +243,12 @@
     {
       "path": "SimObjects/Airplanes/Beast_One/TEXTURE/FUSELAGE.PNG.DDS",
       "size": 11184952,
-      "date": 132600640323048770
+      "date": 132604978699955381
     },
     {
       "path": "SimObjects/Airplanes/Beast_One/TEXTURE/FUSELAGE.PNG.DDS.json",
       "size": 102,
-      "date": 132600640322938747
+      "date": 132604978699805141
     },
     {
       "path": "SimObjects/Airplanes/Beast_One/TEXTURE/texture.CFG",
@@ -262,13 +257,13 @@
     },
     {
       "path": "SimObjects/Airplanes/Beast_One/TEXTURE/thumbnail.JPG",
-      "size": 186661,
-      "date": 132417957880000000
+      "size": 29603,
+      "date": 132604694063509743
     },
     {
       "path": "SimObjects/Airplanes/Beast_One/TEXTURE/thumbnail_small.JPG",
-      "size": 36679,
-      "date": 132417957880000000
+      "size": 6965,
+      "date": 132604694063832634
     }
   ]
 }

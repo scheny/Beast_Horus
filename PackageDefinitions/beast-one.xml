@@ -1,4 +1,4 @@
-<AssetPackage Name="beast-one" Version="0.3.0">
+<AssetPackage Name="beast-one" ReleaseNotes="PackageDefinitions\beast-one\ReleaseNotes.xml" Version="0.3.1">
 	<ItemSettings>
 		<ContentType>AIRCRAFT</ContentType>
 		<Title>Beast One Microjet</Title>
@@ -23,7 +23,7 @@
 			<Flags>
 				<FSXCompatibility>false</FSXCompatibility>
 			</Flags>
-			<AssetDir>PackageDefinitions\beast-one\ContentInfo</AssetDir>
+			<AssetDir>PackageDefinitions\beast-one\ContentInfo\</AssetDir>
 			<OutputDir>ContentInfo\beast-one\</OutputDir>
 		</AssetGroup>
 		<AssetGroup Name="MarketplaceData">

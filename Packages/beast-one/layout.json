@@ -1,0 +1,274 @@
+{
+  "content": [
+    {
+      "path": "ContentInfo/beast-one/Beast_One.jpg",
+      "size": 35537,
+      "date": 132548827950000000
+    },
+    {
+      "path": "ContentInfo/beast-one/Thumbnail.jpg",
+      "size": 10243,
+      "date": 132604100685603965
+    },
+    {
+      "path": "de-DE.locPak",
+      "size": 2039,
+      "date": 132599771073186659
+    },
+    {
+      "path": "de-DE.locUidPak",
+      "size": 2086,
+      "date": 132599771073322335
+    },
+    {
+      "path": "en-US.locPak",
+      "size": 1661,
+      "date": 132599771073176658
+    },
+    {
+      "path": "en-US.locUidPak",
+      "size": 1708,
+      "date": 132599771073276684
+    },
+    {
+      "path": "es-ES.locPak",
+      "size": 1891,
+      "date": 132599771073136652
+    },
+    {
+      "path": "es-ES.locUidPak",
+      "size": 1938,
+      "date": 132599771073246677
+    },
+    {
+      "path": "fr-FR.locPak",
+      "size": 1922,
+      "date": 132599771073206662
+    },
+    {
+      "path": "fr-FR.locUidPak",
+      "size": 1969,
+      "date": 132599771073332339
+    },
+    {
+      "path": "it-IT.locPak",
+      "size": 1922,
+      "date": 132599771073216667
+    },
+    {
+      "path": "it-IT.locUidPak",
+      "size": 1969,
+      "date": 132599771073332339
+    },
+    {
+      "path": "pl-PL.locPak",
+      "size": 2237,
+      "date": 132599771073166656
+    },
+    {
+      "path": "pl-PL.locUidPak",
+      "size": 2284,
+      "date": 132599771073246677
+    },
+    {
+      "path": "pt-BR.locPak",
+      "size": 1898,
+      "date": 132599771073126649
+    },
+    {
+      "path": "pt-BR.locUidPak",
+      "size": 1945,
+      "date": 132599771073216667
+    },
+    {
+      "path": "ru-RU.locPak",
+      "size": 2855,
+      "date": 132599771073176658
+    },
+    {
+      "path": "ru-RU.locUidPak",
+      "size": 2902,
+      "date": 132599771073282227
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/ai.cfg",
+      "size": 1516,
+      "date": 132600380384986142
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/aircraft.cfg",
+      "size": 2873,
+      "date": 132600380385196191
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/aircraft.loc",
+      "size": 17511,
+      "date": 132417957640000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/Approach.flt",
+      "size": 1691,
+      "date": 132580423002718047
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/apron.flt",
+      "size": 2302,
+      "date": 132580423652648555
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/cameras.cfg",
+      "size": 18309,
+      "date": 132600380371422889
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/Checklist/Beast_One_Checklist.xml",
+      "size": 20149,
+      "date": 132417957640000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/Climb.flt",
+      "size": 1727,
+      "date": 132580423973758530
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/cockpit.cfg",
+      "size": 5337,
+      "date": 132600380384846110
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/Cruise.flt",
+      "size": 2483,
+      "date": 132580424460958779
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/engines.cfg",
+      "size": 5938,
+      "date": 132600380378974782
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/Final.flt",
+      "size": 2534,
+      "date": 132580425063045057
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/flight_model.cfg",
+      "size": 11309,
+      "date": 132600380378484669
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/gameplay.cfg",
+      "size": 1224,
+      "date": 132600380384866119
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/hangar.flt",
+      "size": 2204,
+      "date": 132580418802875979
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/model/Beast_One.bin",
+      "size": 3483796,
+      "date": 132600640324879472
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/model/Beast_One.gltf",
+      "size": 157888,
+      "date": 132600640324899478
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/model/Beast_One.xml",
+      "size": 14704,
+      "date": 132600626535002501
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/model/model.CFG",
+      "size": 804,
+      "date": 132598430968252525
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/Notice.txt",
+      "size": 0,
+      "date": 132580312397633532
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/panel/PANEL.CFG",
+      "size": 267,
+      "date": 132598840514014784
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/panel/panel.xml",
+      "size": 12085,
+      "date": 132599762389627234
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/runway.FLT",
+      "size": 2322,
+      "date": 132580425392803781
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/sound/Asobo_CJ4.PC.PCK",
+      "size": 61553551,
+      "date": 132531393724795738
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/sound/sound.xml",
+      "size": 25508,
+      "date": 132531393724795738
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/soundai/Asobo_CJ4_AI.PC.PCK",
+      "size": 9997391,
+      "date": 132422119395453966
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/soundai/soundai.xml",
+      "size": 978,
+      "date": 132422119398820378
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/systems.cfg",
+      "size": 9478,
+      "date": 132600554050217746
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/systems.cfg.bak",
+      "size": 9501,
+      "date": 132600391137514299
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/target_performance.cfg",
+      "size": 0,
+      "date": 132585492266119099
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/taxi.flt",
+      "size": 2336,
+      "date": 132580419706876439
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/TEXTURE/FUSELAGE.PNG.DDS",
+      "size": 11184952,
+      "date": 132600640323048770
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/TEXTURE/FUSELAGE.PNG.DDS.json",
+      "size": 102,
+      "date": 132600640322938747
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/TEXTURE/texture.CFG",
+      "size": 200,
+      "date": 132417957880000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/TEXTURE/thumbnail.JPG",
+      "size": 186661,
+      "date": 132417957880000000
+    },
+    {
+      "path": "SimObjects/Airplanes/Beast_One/TEXTURE/thumbnail_small.JPG",
+      "size": 36679,
+      "date": 132417957880000000
+    }
+  ]
+}

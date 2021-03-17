@@ -39,6 +39,11 @@
 			<UseTemplate Name="ASOBO_GEAR_Steering_Template">
 			</UseTemplate>
 		</Component>
+		<Component ID="ENGINE">
+			<UseTemplate Name="ASOBO_ENGINE_Lever_Throttle_Template">
+				<DRAG_AXIS_SCALE>-200</DRAG_AXIS_SCALE>
+			</UseTemplate>
+		</Component>
 
 		<!-- AUTOPILOT - Should maybe be a UseTemplate Autopilot_AS305_Template	-->	
 		<Component ID="AUTOPILOT">
@@ -220,7 +225,7 @@
                 <Sim>
                     <Variable>LIGHT LANDING</Variable>
                     <Units>bool</Units>
-                    <Scale>50</Scale>
+                    <Scale>100</Scale>
                 </Sim>
                 <Lag>400</Lag>
             </Parameter>
@@ -244,7 +249,7 @@
                 <Sim>
                     <Variable>LIGHT NAV</Variable>
                     <Units>bool</Units>
-                    <Scale>50</Scale>
+                    <Scale>100</Scale>
                 </Sim>
                 <Lag>400</Lag>
             </Parameter>
@@ -268,7 +273,7 @@
                 <Sim>
                     <Variable>PITOT HEAT</Variable>
                     <Units>bool</Units>
-                    <Scale>50</Scale>
+                    <Scale>100</Scale>
                 </Sim>
                 <Lag>400</Lag>
             </Parameter>
@@ -290,7 +295,7 @@
                 <Sim>
                     <Variable>GENERAL ENG MASTER ALTERNATOR:1</Variable>
                     <Units>bool</Units>
-                    <Scale>50</Scale>
+                    <Scale>100</Scale>
                 </Sim>
                 <Lag>400</Lag>
             </Parameter>
@@ -312,7 +317,7 @@
                 <Sim>
                     <Variable>ELECTRICAL MASTER BATTERY</Variable>
                     <Units>bool</Units>
-                    <Scale>50</Scale>
+                    <Scale>100</Scale>
                 </Sim>
                 <Lag>400</Lag>
             </Parameter>
@@ -336,7 +341,7 @@
                 <Sim>
                     <Variable>GENERAL ENG STARTER:1</Variable>
                     <Units>bool</Units>
-                    <Scale>50</Scale>
+                    <Scale>100</Scale>
                 </Sim>
                 <Lag>400</Lag>
             </Parameter>

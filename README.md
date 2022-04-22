@@ -1,2 +1,2 @@
-# Beast One
-Beast One aircraft for Microsoft Flight Simulator 2020
+# Beast Horus
+Beast Horus aircraft for Microsoft Flight Simulator 2020

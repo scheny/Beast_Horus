@@ -1,0 +1,111 @@
+{
+  "market-data": {
+    "Neutral": {
+      "creator": "Andreas Schoenwaelder",
+      "title": "Horus",
+      "description": "The next generation of personal jet flying. Take off from any small grass-strip, cruise at 230 KIAS and do some crazy aerobatics whenever you feel like it. Gentle and predictable stall behavior, but paired with the unleashed power of a true jet. Fly hard, fly Beast!",
+      "support-contact": "office@beast.aero",
+      "tags": "AIRCRAFT,VERY LIGHT JET,AEROBATIC,JET",
+      "media-backgrounds": [
+        "thumbnail3840x2160.jpg,thumbnail3840x2160.jpg"
+      ],
+      "blocks": [
+        {
+          "type": "SPECS",
+          "data": {
+            "values": [
+              {
+                "name": "SPEED",
+                "valueStr": "Cruise: 230 kt, Max.: 300 kt"
+              },
+              {
+                "name": "CEILING",
+                "valueStr": "18.000 ft"
+              },
+              {
+                "name": "LENGTH",
+                "valueStr": "5.2 m (17 ft)"
+              },
+              {
+                "name": "WINGSPAN",
+                "valueStr": "5.8 m (19 ft)"
+              },
+              {
+                "name": "MAX TAKEOFF WEIGHT",
+                "valueStr": "380 kg (838 lb)"
+              },
+              {
+                "name": "TYPICAL RANGE",
+                "valueStr": "1020 km \/ 550 nmi"
+              },
+              {
+                "name": "FUEL CAPACITY",
+                "valueStr": "152 l (40 Gal)"
+              },
+              {
+                "name": "ENGINE",
+                "valueStr": "PBS TJ-100"
+              },
+              {
+                "name": "COCKPIT CREW",
+                "valueStr": "1"
+              }
+            ]
+          }
+        },
+        {
+          "type": "MEDIASLIDER",
+          "data": {
+            "medias": [
+              {
+                "thumbnail": "thumbnail3236x1816.jpg"
+              },
+              {
+                "thumbnail": "thumbnail3236x1816.jpg"
+              }
+            ]
+          }
+        },
+        {
+          "type": "MEDIASCROLLER",
+          "data": {
+            "medias": [
+              {
+                "thumbnail": "placeholder940x530.jpg"
+              },
+              {
+                "thumbnail": "placeholder940x530.jpg"
+              }
+            ]
+          }
+        },
+        {
+          "type": "MEDIASLIDER",
+          "data": {
+            "medias": [
+              {
+                "thumbnail": "thumbnail3236x1816.jpg"
+              },
+              {
+                "thumbnail": "thumbnail3236x1816.jpg"
+              }
+            ]
+          }
+        },
+        {
+          "type": "MEDIASCROLLER",
+          "data": {
+            "medias": [
+              {
+                "thumbnail": "placeholder940x530.jpg"
+              },
+              {
+                "thumbnail": "placeholder940x530.jpg"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

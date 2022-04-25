@@ -1,8 +1,0 @@
-<Project Version="2" Name="Beast_One_Project" FolderName="Packages">
-	<OutputDirectory>.</OutputDirectory>
-	<TemporaryOutputDirectory>_PackageInt</TemporaryOutputDirectory>
-	<Packages>
-		<Package>PackageDefinitions\beast-one.xml</Package>
-	</Packages>
-</Project>
-

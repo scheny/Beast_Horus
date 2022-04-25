@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AssetPackage Version="0.1.0">
+	<ItemSettings>
+		<ContentType>AIRCRAFT</ContentType>
+		<Title>Horus</Title>
+		<Manufacturer>Beast</Manufacturer>
+		<Creator>Andreas Schoenwaelder</Creator>
+	</ItemSettings>
+	<Flags>
+		<VisibleInStore>true</VisibleInStore>
+		<CanBeReferenced>true</CanBeReferenced>
+	</Flags>
+	<AssetGroups>
+		<AssetGroup Name="Beast_Horus">
+			<Type>SimObject</Type>
+			<Flags>
+				<FSXCompatibility>false</FSXCompatibility>
+			</Flags>
+			<AssetDir>PackageSources\SimObjects\Airplanes\Beast_Horus\</AssetDir>
+			<OutputDir>SimObjects\Airplanes\Beast_Horus\</OutputDir>
+		</AssetGroup>
+		<AssetGroup Name="ContentInfo">
+			<Type>Copy</Type>
+			<Flags>
+				<FSXCompatibility>false</FSXCompatibility>
+			</Flags>
+			<AssetDir>PackageDefinitions\beast-horus\ContentInfo\</AssetDir>
+			<OutputDir>ContentInfo\beast-horus\</OutputDir>
+		</AssetGroup>
+		<AssetGroup Name="MarketplaceData">
+			<Type>MarketplaceData</Type>
+			<Flags>
+				<FSXCompatibility>false</FSXCompatibility>
+			</Flags>
+			<AssetDir>PackageDefinitions\beast-horus\MarketplaceData\</AssetDir>
+			<OutputDir>MarketplaceData\beast-horus\</OutputDir>
+		</AssetGroup>
+	</AssetGroups>
+</AssetPackage>
+

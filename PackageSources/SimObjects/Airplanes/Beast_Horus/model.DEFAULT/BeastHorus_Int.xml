@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ModelInfo>
+	<LODS>
+		<!-- Highest LOD -->
+		<!-- minimum display size in % (should be bounding sphere vertical screen size, sphere will often be slightly larger than you expect) -->
+		<!-- default minSize is 0 -->
+		<LOD minSize="0" 	ModelFile="BeastHorus_Int.gltf"/>
+	</LODS>
+	
+	<Behaviors>
+		<!-- INCLUDES ###################################-->
+		<Include ModelBehaviorFile="Asobo\Exterior.xml"/>
+		<Include ModelBehaviorFile="Asobo\Common.xml"/>
+		<Include ModelBehaviorFile="Asobo\Generic\FX.xml"/>
+		<Include ModelBehaviorFile="Asobo\GlassCockpit\AS3X_Touch.xml"/>
+		<Include ModelBehaviorFile="Asobo\GlassCockpit\AS5.xml"/>
+		<Include ModelBehaviorFile="Asobo\GlassCockpit\AS307.xml"/>
+		<!-- ############################################-->
+		
+	<Template Name="My_Lever_Template">
+        <Parameters Type="Default">
+            <ANIM_NAME>CANOPY_HINGE</ANIM_NAME>
+            <NODE_ID>CANOPY_LEVER</NODE_ID>
+            <PART_ID>CANOPY_LEVER</PART_ID>
+            <SCOPE>L</SCOPE>
+            <VAR_NAME>CANOPY_HINGE</VAR_NAME>
+            <TOOLTIP_TITLE>Open/Close Canopy</TOOLTIP_TITLE>
+            <TT_DESCRIPTION_ID>Open/Close</TT_DESCRIPTION_ID>
+            <INTERACTION_TYPE>Knob</INTERACTION_TYPE>
+            <FORMAT_VALUE>'%d%%' @sprintf</FORMAT_VALUE>
+            <CLAMP_VALUE>0 max 100 min</CLAMP_VALUE>
+            <WRAP>False</WRAP>
+        </Parameters>
+        <Parameters Type="Default">
+            <KNOB_ID>#ANIM_NAME#</KNOB_ID>
+            <INPUT_EVENT_ID_SOURCE>INSTRUMENT</INPUT_EVENT_ID_SOURCE>
+        </Parameters>
+        <UseTemplate Name="ASOBO_#INPUT_EVENT_ID_SOURCE#_Base_Template">
+            <IE_NAME>#ANIM_NAME#</IE_NAME>
+            <SET_STATE_EXTERNAL>(&gt;#SCOPE#:#VAR_NAME#)</SET_STATE_EXTERNAL>
+            <GET_STATE_EXTERNAL>(#SCOPE#:#VAR_NAME#)</GET_STATE_EXTERNAL>
+            <ENUM_VAL_TO_POS_EXTERNAL>l0</ENUM_VAL_TO_POS_EXTERNAL>
+        </UseTemplate>
+    </Template>
+		
+	<Component ID="HANDLING">	
+		<Component ID="CANOPY_LATCH">
+			<UseTemplate Name="My_Lever_Template">
+				<TOOLTIP_TITLE>Open/Close Canopy</TOOLTIP_TITLE>
+			</UseTemplate>
+		</Component>
+		<Component ID="FLIGHTSTICK">
+			<UseTemplate Name="ASOBO_HANDLING_Yoke_Template">
+				<NODE_ID>Flight_Stick_FA</NODE_ID>
+				<NODE_ID2>Flight_Stick_LR</NODE_ID2>
+				<CREATE_TWO_NODES/>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Switch_ElevatorTrim_Template">
+				<MOMENTARY_MIN_DURATION>0.1</MOMENTARY_MIN_DURATION>
+				<NODE_ID>ELEVATOR_TRIM_SWITCH</NODE_ID>
+				<ANIM_NAME>ELEVATOR_TRIM_SWITCH</ANIM_NAME>
+				<TRIM_LIMIT>19.5</TRIM_LIMIT>
+				<IE_ELEVATOR_TRIM>YOKE</IE_ELEVATOR_TRIM>
+			</UseTemplate>
+		</Component>
+		<Component ID="THROTTLE_LEVER">
+			<UseTemplate Name="ASOBO_ENGINE_Lever_Throttle_Template">
+				<DRAG_AXIS_SCALE>-200</DRAG_AXIS_SCALE>
+			</UseTemplate>
+		</Component>
+		<Component ID="HANDLING_RudderPedals">
+			<UseTemplate Name="ASOBO_HANDLING_RudderPedals_Template">
+				<RUDDERPEDALS_TYPE>MIXED</RUDDERPEDALS_TYPE>
+				<NODE_ID_L_BRAKE_1>HANDLING_RudderPedals_Brake_1_1</NODE_ID_L_BRAKE_1>
+				<NODE_ID_L_BRAKE_2>HANDLING_RudderPedals_Brake_2_1</NODE_ID_L_BRAKE_2>
+				<NODE_ID_R_BRAKE_1>HANDLING_RudderPedals_Brake_1_2</NODE_ID_R_BRAKE_1>
+				<NODE_ID_R_BRAKE_2>HANDLING_RudderPedals_Brake_2_2</NODE_ID_R_BRAKE_2>
+				<NODE_ID_L_RUDDER>HANDLING_RudderPedals_1_1</NODE_ID_L_RUDDER>
+				<NODE_ID_R_RUDDER>HANDLING_RudderPedals_1_2</NODE_ID_R_RUDDER>
+				<NODE_ID>HANDLING_RudderPedals_1_1</NODE_ID>
+			</UseTemplate>
+		</Component>
+		<Component ID="HANDLING_TEMPLATES">
+			<UseTemplate Name="ASOBO_HANDLING_Elevator_Template">
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Rudder_Template">
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Aileron_Template">
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Flaps_Template">
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Spoilers_Template">
+			</UseTemplate>
+		</Component>		
+	</Component>
+	
+	<Component ID="HOTAS_BUTTONS">
+		<!--
+		Replace some of these buttons with following functions in the future:
+		ASOBO_AUTOPILOT_Push_Disconnect_Template
+		ASOBO_AUTOPILOT_Push_Level_Template
+		ASOBO_HANDLING_Switch_Spoiler_Template
+		-->
+		<Component ID="AUTOPILOT_DISCONNECT_BUTTON" Node="AUTOPILOT_DISCONNECT_BUTTON">
+			<UseTemplate Name="ASOBO_GT_Push_Button_Held">
+				<ANIM_NAME>AUTOPILOT_DISCONNECT_BUTTON</ANIM_NAME>
+				<SHORT_CLICK_CODE></SHORT_CLICK_CODE>
+				<LONG_CLICK_CODE></LONG_CLICK_CODE>
+				<TOOLTIPID>A/P Disconnect</TOOLTIPID>
+			</UseTemplate>
+		</Component>
+		<Component ID="AUTOPILOT_PROTECTION_BUTTON" Node="AUTOPILOT_PROTECTION_BUTTON">
+			<UseTemplate Name="ASOBO_GT_Push_Button_Held">
+				<ANIM_NAME>AUTOPILOT_PROTECTION_BUTTON</ANIM_NAME>
+				<SHORT_CLICK_CODE></SHORT_CLICK_CODE>
+				<LONG_CLICK_CODE></LONG_CLICK_CODE>
+				<TOOLTIPID>ESP</TOOLTIPID>
+			</UseTemplate>
+		</Component>
+		<Component ID="SMOKE_TOGGLE_BUTTON" Node="SMOKE_TOGGLE_BUTTON">
+			<UseTemplate Name="ASOBO_GT_Push_Button_Held">
+				<ANIM_NAME>SMOKE_TOGGLE_BUTTON</ANIM_NAME>
+				<SHORT_CLICK_CODE></SHORT_CLICK_CODE>
+				<LONG_CLICK_CODE></LONG_CLICK_CODE>
+				<TOOLTIPID>Smoke (not functional)</TOOLTIPID>
+			</UseTemplate>
+		</Component>
+		<Component ID="PTT_BUTTON" Node="PTT_BUTTON">
+			<UseTemplate Name="ASOBO_GT_Push_Button_Held">
+				<ANIM_NAME>PTT_BUTTON</ANIM_NAME>
+				<SHORT_CLICK_CODE></SHORT_CLICK_CODE>
+				<LONG_CLICK_CODE></LONG_CLICK_CODE>
+				<TOOLTIPID>PTT</TOOLTIPID>
+			</UseTemplate>
+		</Component>
+		<Component ID="AUTOPILOT_GO_AROUND_BUTTON" Node="AUTOPILOT_GO_AROUND_BUTTON">
+			<UseTemplate Name="ASOBO_GT_Push_Button_Held">
+				<ANIM_NAME>AUTOPILOT_GO_AROUND_BUTTON</ANIM_NAME>
+				<SHORT_CLICK_CODE></SHORT_CLICK_CODE>
+				<LONG_CLICK_CODE></LONG_CLICK_CODE>
+				<TOOLTIPID>TO/GA</TOOLTIPID>
+			</UseTemplate>
+		</Component>
+		<Component ID="AIR_BRAKE_TOGGLE_BUTTON" Node="AIR_BRAKE_TOGGLE_BUTTON">
+			<UseTemplate Name="ASOBO_GT_Push_Button_Held">
+				<ANIM_NAME>AIR_BRAKE_TOGGLE_BUTTON</ANIM_NAME>
+				<SWITCH_POSITION_TYPE>L</SWITCH_POSITION_TYPE>
+				<SWITCH_POSITION_VAR>SPOILERS_TOGGLE</SWITCH_POSITION_VAR>
+				<TOOLTIPID>Airbrake</TOOLTIPID>
+			</UseTemplate>
+		</Component>
+	</Component>
+
+	<Component ID="AVIONICS">
+		<Component ID="AS3X_Touch">
+			<UseTemplate Name="ASOBO_AS3X_Touch_Knob_Template">
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_AS3X_Touch_Push_Template">
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_AS3X_Touch_Template">
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_AS3X_Touch_Screen_Template">
+			</UseTemplate>
+		</Component>
+		<Component ID="ATTITUDE_DISPLAY">
+			<UseTemplate Name="ASOBO_AS5_Template">
+			</UseTemplate>
+		</Component>
+		<Component ID="AUTOPILOT">
+			<UseTemplate Name="ASOBO_AS307_Template">
+			</UseTemplate>
+		</Component>
+	</Component>
+		
+	<Component ID="PANEL_UPPER">
+		<Component ID="ENABLE_GLARESHIELD">
+			<UseTemplate Name="ASOBO_GT_Update">
+				<UPDATE_ONCE>True</UPDATE_ONCE>
+				<UPDATE_CODE>
+					(&gt;K:GLARESHIELD_LIGHTS_ON)
+				</UPDATE_CODE>
+			</UseTemplate>
+		</Component>
+		<Component ID="LIGHT_GLARESHIELD">
+			<UseTemplate Name="ASOBO_LIGHTING_Glareshield_Emissive_Template">
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Knob_Panel_Template">
+				<NODE_ID>LIGHTING_Knob_Panel</NODE_ID>
+				<ANIM_NAME>LIGHTING_Knob_Panel</ANIM_NAME>
+				<TT_DESCRIPTION_ID>@TT_Package.LIGHTING_KNOB_AVIONICSBRIGHTNESS_ACTION_SET</TT_DESCRIPTION_ID>
+				<TOOLTIP_TITLE>@TT_Package.LIGHTING_KNOB_AVIONICSBRIGHTNESS_TITLE</TOOLTIP_TITLE>
+				<POTENTIOMETER>3</POTENTIOMETER>
+				<KNOB_TURN_SPEED>10</KNOB_TURN_SPEED>
+			</UseTemplate>
+		</Component>
+		<Component ID="LIGHT_LANDING">
+		</Component>
+		<Component ID="LIGHT_TAXI">
+			<UseTemplate Name="ASOBO_LIGHTING_Switch_Light_Taxi_Template">
+				<NODE_ID>LIGHTING_Switch_Light_Taxi</NODE_ID>
+				<ANIM_NAME>switch_taxi_light</ANIM_NAME>
+				<ANIMTIP_0>TT:COCKPIT.TOOLTIPS.TAXI_LIGHT_OFF</ANIMTIP_0>
+				<ANIMTIP_1>TT:COCKPIT.TOOLTIPS.TAXI_LIGHT_ON</ANIMTIP_1>
+			</UseTemplate>
+		</Component>
+		<Component ID="LIGHTING_Switch_Light_HiLo" Node="LIGHTING_Switch_Light_HiLo">
+			<UseTemplate Name="ASOBO_GT_Switch_2states">
+				<ANIM_NAME>switch_hi_lo</ANIM_NAME>
+				<CODE_POS_0>
+					50 (&gt;K:LIGHT_POTENTIOMETER_2_SET)
+				</CODE_POS_0>
+				<CODE_POS_1>
+					100 (&gt;K:LIGHT_POTENTIOMETER_2_SET)
+				</CODE_POS_1>
+				<STATE0_TEST>(A:LIGHT POTENTIOMETER:2, percent)  100 !=</STATE0_TEST>
+				<STATE1_TEST>(A:LIGHT POTENTIOMETER:2, percent)  100 ==</STATE1_TEST>
+				<TOOLTIPID>Lights intensity</TOOLTIPID>
+			</UseTemplate>
+		</Component>
+		<!--		
+		<Component ID="LIGHTING_Switch_Light_HiLo" Node="LIGHTING_Switch_Light_HiLo">
+			<UseTemplate Name="ASOBO_GT_Switch_Code">
+				<ANIM_NAME>switch_hi_lo</ANIM_NAME>
+				<ANIM_CODE>(A:LIGHT POTENTIOMETER:1, percent) 100 == if{ 100 } els{ 0 }</ANIM_CODE>
+				<ANIMTIP_0>Lights intensity 50%%</ANIMTIP_0>
+				<ANIMTIP_1>Lights intensity 100%%</ANIMTIP_1>
+				<LEFT_SINGLE_CODE>(A:LIGHT POTENTIOMETER:1, percent) 100 == if{ 100 } els{ 50 } (&gt;K:LIGHT_POTENTIOMETER_1_SET)</LEFT_SINGLE_CODE>
+			</UseTemplate>
+		</Component>
+		-->		
+		<Component ID="LIGHT_STROBE">
+			<UseTemplate Name="ASOBO_LIGHTING_Switch_Light_Strobe_Template">
+				<NODE_ID>LIGHTING_Switch_Light_Strobe</NODE_ID>
+				<ANIM_NAME>switch_strobe_light</ANIM_NAME>
+				<ANIMTIP_0>TT:COCKPIT.TOOLTIPS.STROBE_LIGHT_OFF</ANIMTIP_0>
+				<ANIMTIP_1>TT:COCKPIT.TOOLTIPS.STROBE_LIGHT_ON</ANIMTIP_1>
+			</UseTemplate>
+		</Component>
+		<Component ID="LIGHT_NAVIGATION">
+			<UseTemplate Name="ASOBO_LIGHTING_Switch_Light_Navigation_Template">
+				<NODE_ID>LIGHTING_Switch_Light_Navigation</NODE_ID>
+				<ANIM_NAME>switch_nav_light</ANIM_NAME>
+				<ANIMTIP_0>TT:COCKPIT.TOOLTIPS.NAVIGATION_LIGHT_OFF</ANIMTIP_0>
+				<ANIMTIP_1>TT:COCKPIT.TOOLTIPS.NAVIGATION_LIGHT_ON</ANIMTIP_1>
+			</UseTemplate>
+		</Component>
+		<Component ID="LIGHT_WIGWAG">
+		</Component>
+		<Component ID="MASTER_ALERT">
+			<UseTemplate Name="ASOBO_SAFETY_Indicator_Caution_Master_Template">
+				<NODE_ID>LIGHT_master_alert</NODE_ID>
+			</UseTemplate>
+		</Component>
+	</Component>
+		
+	<Component ID="PANEL_LEFT">
+		<Component ID="HANDLING_Flaps">
+			<DefaultTemplateParameters>
+				<TYPE>ALWAYS_ONE_LIT</TYPE>
+				<ANGLE_DEGREE_1>0</ANGLE_DEGREE_1>
+				<ANGLE_DEGREE_2>15</ANGLE_DEGREE_2>
+				<ANGLE_DEGREE_3>40</ANGLE_DEGREE_3>
+			</DefaultTemplateParameters>
+			<UseTemplate Name="ASOBO_HANDLING_Light_Flaps_Template">
+				<ID>0</ID>
+				<NODE_ID>light_flaps_1</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Light_Flaps_Template">
+				<ID>1</ID>
+				<NODE_ID>light_flaps_2</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Light_Flaps_Template">
+				<ID>2</ID>
+				<NODE_ID>light_flaps_3</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Lever_Flaps_Template">
+				<USE_TRAJECTORY_DRAG_MODE>True</USE_TRAJECTORY_DRAG_MODE>
+				<INVERT_IM_DRAG_INPUT_SCALAR>True</INVERT_IM_DRAG_INPUT_SCALAR>
+			</UseTemplate>	
+		</Component>
+		<Component ID="LANDING_GEAR_Lever_Gear">
+			<UseTemplate Name="ASOBO_LANDING_GEAR_Lever_Gear_Template">
+				<NODE_ID>Gear-Switch-Lever</NODE_ID>
+				<ANIM_NAME>lever_landing_gear</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LANDING_GEAR_Light_Center_Template">
+				<NODE_ID>light_landingGear_nose</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LANDING_GEAR_Light_Left_Template">
+				<NODE_ID>light_landingGear_L</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LANDING_GEAR_Light_Right_Template">
+				<NODE_ID>light_landingGear_R</NODE_ID>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LANDING_GEAR_Light_Unsafe_Template">
+				<NODE_ID>light_landingGear_unsafe</NODE_ID>
+				<CHECK_GEAR_CENTER_POSITION/>
+				<CHECK_GEAR_LEFT_POSITION/>
+				<CHECK_GEAR_RIGHT_POSITION/>
+			</UseTemplate>
+		</Component>
+		<Component ID="ENGINE_MASTER">
+			<UseTemplate Name="ASOBO_ENGINE_Switch_Master_Template">
+				<NODE_ID>ENGINE_Switch_Master</NODE_ID>
+				<ANIM_NAME>ENGINE_Switch_Master</ANIM_NAME>
+				<LOCK_NODE_ID>ENGINE_Switch_Master_Lock</LOCK_NODE_ID>
+				<LOCK_ANIM_NAME>ENGINE_Switch_Master_Lock</LOCK_ANIM_NAME>
+				<TYPE>LOCKED</TYPE>
+			</UseTemplate>
+		</Component>
+	</Component>
+	
+	<Component ID="PANEL_LOWER">
+		<Component ID="GENERATOR_SWITCH">
+			<UseTemplate Name="ASOBO_ELECTRICAL_Switch_Alternator_Template">
+				<NODE_ID>switch_master_alternator</NODE_ID>
+				<ANIM_NAME>switch_master_alternator</ANIM_NAME>
+				<ID>1</ID>
+				<ANIMTIP_0>TT:COCKPIT.TOOLTIPS.MASTER_SWITCH_ALT_OFF</ANIMTIP_0>
+				<ANIMTIP_1>TT:COCKPIT.TOOLTIPS.MASTER_SWITCH_ALT_ON</ANIMTIP_1>
+			</UseTemplate>
+		</Component>
+		<Component ID="AVIONICS_SWITCH">
+			<UseTemplate Name="ASOBO_ELECTRICAL_Switch_Avionics_Bus_Template">
+				<NODE_ID>switch_avionics</NODE_ID>
+				<ANIM_NAME>switch_avionics</ANIM_NAME>
+				<PART_ID>switch_avionics</PART_ID>
+				<AVIONICS_BUS_ID>3</AVIONICS_BUS_ID>
+				<SOURCE_BUS_ID>1</SOURCE_BUS_ID>
+				<AVIONICS_CIRCUIT_ID>9</AVIONICS_CIRCUIT_ID>
+				<ANIMTIP_0>TT:COCKPIT.TOOLTIPS.AVIONICS_MASTER_SWITCH_OFF</ANIMTIP_0>
+				<ANIMTIP_1>TT:COCKPIT.TOOLTIPS.AVIONICS_MASTER_SWITCH_ON</ANIMTIP_1>
+			</UseTemplate>
+		</Component>
+		<Component ID="BATTERY_MASTER">
+			<UseTemplate Name="ASOBO_ELECTRICAL_Switch_Battery_Master_Template">
+				<NODE_ID>switch_master_battery</NODE_ID>
+				<ANIM_NAME>switch_master_battery</ANIM_NAME>
+			</UseTemplate>
+		</Component>
+        <Component ID="switch_smoke" Node="switch_smoke">
+			<UseTemplate Name="ASOBO_GT_Switch_Code">
+				<ANIM_NAME>switch_smoke</ANIM_NAME>
+				<ANIM_CODE>(L:SMOKE RED ACTIVE,number) 1 == if{ 100 } els{ 0 }</ANIM_CODE>
+				<ANIMTIP_0>Red Aerobatics Smoke (Off)</ANIMTIP_0>
+				<ANIMTIP_1>Red Aerobatics Smoke (On)</ANIMTIP_1>
+				<LEFT_SINGLE_CODE>(L:SMOKE RED ACTIVE,number) ! (&gt;L:SMOKE RED ACTIVE,number)</LEFT_SINGLE_CODE>
+			</UseTemplate>
+		</Component>
+		<Component ID="PITOT_HEAT">
+			<UseTemplate Name="ASOBO_DEICE_Switch_Pitot_Template">
+				<ANIM_NAME>switch_pitot_heat</ANIM_NAME>
+				<NODE_ID>switch_pitot_heat</NODE_ID>
+			</UseTemplate>
+		</Component>
+		<Component ID="switch_seat_heat" Node="switch_seat_heat">
+			<UseTemplate Name="ASOBO_GT_Switch_Dummy">
+				<ANIM_NAME>switch_seat_heat</ANIM_NAME>
+				<NODE_ID>switch_seat_heat</NODE_ID>
+				<SWITCH_POSITION_TYPE>L</SWITCH_POSITION_TYPE>
+				<SWITCH_POSITION_VAR></SWITCH_POSITION_VAR>
+				<ANIMTIP_0>Seat Heating</ANIMTIP_0>
+				<ANIMTIP_1>Seat Heating</ANIMTIP_1>
+				<INVERT_ANIM>True</INVERT_ANIM>
+				<LEFT_SINGLE_CODE>
+				</LEFT_SINGLE_CODE>
+			</UseTemplate>
+		</Component>
+		<Component ID="ELT">
+			<UseTemplate Name="ASOBO_SAFETY_Switch_ELT_Template">
+				<EMISSIVE_NODE_ID>SAFETY_Switch_ELT_Active</EMISSIVE_NODE_ID>
+				<NODE_ID>SAFETY_Switch_ELT</NODE_ID>
+				<ANIM_NAME>SAFETY_Switch_ELT</ANIM_NAME>
+				<TYPE>ARM_ON</TYPE>
+			</UseTemplate>
+		</Component>
+		<Component ID="LANDING_GEAR_Switch_ParkingBrake">
+			<UseTemplate Name="ASOBO_LANDING_GEAR_Switch_ParkingBrake_Template">
+				<ANIM_DELAY>0.25</ANIM_DELAY>
+				<INVERT_SWITCH_ON_CONDITION>True</INVERT_SWITCH_ON_CONDITION>
+			</UseTemplate>
+		</Component>
+	</Component>	
+
+	<Component ID="Landing_Pulse">
+				<UseTemplate Name="ASOBO_LIGHTING_Light_Base_Template">
+					<IE_NAME>LANDING_Lights</IE_NAME>
+					<INTERACTION_TYPE>Switch</INTERACTION_TYPE>
+					<LIGHT_TYPE>LANDING</LIGHT_TYPE>
+					<NODE_ID>LIGHTING_Switch_Light_Landing</NODE_ID>
+					<ANIM_NAME>switch_landing_light</ANIM_NAME>
+					<PART_ID>LIGHTING_Switch_Light_Landing</PART_ID>
+					<TT_DESCRIPTION_ID>@TT_Package.LIGHTING_SWITCH_LIGHT_LANDING_ACTION_SET</TT_DESCRIPTION_ID>
+					<TOOLTIP_TITLE>@TT_Package.LIGHTING_SWITCH_LIGHT_LANDING_TITLE</TOOLTIP_TITLE>
+					<TT_VALUE>(I:LANDING_LIGHTS_SWITCH_ON) @TT_OnOff_Cond</TT_VALUE>
+					<TT_VALUE_IS_DYNAMIC>True</TT_VALUE_IS_DYNAMIC>
+					<SET_STATE_ON>1 (&gt;I:LANDING_LIGHTS_SWITCH_ON)</SET_STATE_ON>
+					<SET_STATE_OFF>0 (&gt;I:LANDING_LIGHTS_SWITCH_ON)</SET_STATE_OFF>
+					<GET_STATE_EXTERNAL>(I:LANDING_LIGHTS_SWITCH_ON) sp0</GET_STATE_EXTERNAL>
+					<OVERRIDE_ANIM_CODE>(I:LANDING_LIGHTS_SWITCH_ON) 100 *</OVERRIDE_ANIM_CODE>
+					<ANIM_CODE>(I:LANDING_LIGHTS_SWITCH_ON) 100 *</ANIM_CODE>
+				</UseTemplate>
+				<UseTemplate Name="ASOBO_LIGHTING_Switch_Potentiometer_Template">
+					<NODE_ID>LIGHTING_Switch_Light_Pulse</NODE_ID>			
+					<ANIM_NAME>switch_wig_wag</ANIM_NAME>
+					<PART_ID>LIGHTING_Push_Pulse</PART_ID>
+					<TOOLTIP_TITLE>@TT_Package.LIGHTING_SWITCH_LIGHT_PULSE_TITLE</TOOLTIP_TITLE>
+					<TT_DESCRIPTION_ID>@TT_Package.LIGHTING_SWITCH_LIGHT_PULSE_ACTION</TT_DESCRIPTION_ID>
+					<INVERT_ANIM>True</INVERT_ANIM>
+					<POTENTIOMETER>1</POTENTIOMETER>
+					<ID>1</ID>
+				</UseTemplate>
+				<UseTemplate Name="ASOBO_GT_Update">
+					<FREQUENCY>2</FREQUENCY>
+						<UPDATE_CODE>
+						(I:LANDING_LIGHTS_SWITCH_ON) 1 == if{
+							(L:LIGHTING_POTENTIOMETER_1) 100 == if{
+								(&gt;K:LANDING_LIGHTS_TOGGLE)
+							}
+							els{
+								(&gt;K:LANDING_LIGHTS_ON)
+							}
+						}
+						els{
+							(&gt;K:LANDING_LIGHTS_OFF)
+						}
+						</UPDATE_CODE>
+				</UseTemplate>
+				<UseInputEvent ID="PROCEDURE">
+					<INPUT_EVENT_ID_SOURCE>PROCEDURE</INPUT_EVENT_ID_SOURCE>
+					<IE_NAME>Toggle_Landing_Light</IE_NAME>
+					<SET_ARG_COUNT>1</SET_ARG_COUNT>
+						<BINDING_SET_0>L0</BINDING_SET_0>
+						<BINDING_SET_0_PARAM_0>1</BINDING_SET_0_PARAM_0>
+						<BINDING_SET_0_EVENT_ID>LANDING_LIGHTS_TOGGLE</BINDING_SET_0_EVENT_ID>
+						<BINDING_SET_0_EVENT_ID_ONLY>True</BINDING_SET_0_EVENT_ID_ONLY>
+						<BINDING_SET_1>L1</BINDING_SET_1>
+						<BINDING_SET_1_PARAM_0>2</BINDING_SET_1_PARAM_0>
+						<BINDING_SET_1_EVENT_ID>ALL_LIGHTS_TOGGLE</BINDING_SET_1_EVENT_ID>
+						<BINDING_SET_1_EVENT_ID_ONLY>True</BINDING_SET_1_EVENT_ID_ONLY>
+					<INC_CODE>1 (&gt;B:#INPUT_EVENT_ID_SOURCE#_#IE_NAME#_Set)</INC_CODE>
+					<DEC_CODE>0 (&gt;B:#INPUT_EVENT_ID_SOURCE#_#IE_NAME#_Set)</DEC_CODE>
+					<SET_CODE>
+						p0 2 == if{
+							(&gt;K:ALL_LIGHTS_TOGGLE)
+							(A:LIGHT STROBE:1, Bool) (I:LANDING_LIGHTS_SWITCH_ON, Bool) == if{ quit }
+						}
+						(I:LANDING_LIGHTS_SWITCH_ON) 1 == if{ 0 (&gt;I:LANDING_LIGHTS_SWITCH_ON) }
+						els{ 1 (&gt;I:LANDING_LIGHTS_SWITCH_ON) }
+					</SET_CODE>
+					<TT_DESCRIPTION>@TT_Package.GT_STATE_NA</TT_DESCRIPTION> <TT_DESCRIPTION_IS_DYNAMIC>False</TT_DESCRIPTION_IS_DYNAMIC>
+					<TT_VALUE>@TT_Package.GT_STATE_NA</TT_VALUE> <TT_VALUE_IS_DYNAMIC>False</TT_VALUE_IS_DYNAMIC>
+					<TT_ICON>PUSH</TT_ICON> <TT_INTERACTION>PRIMARY_DOWN</TT_INTERACTION> <TT_INTERACTION_LOCKABLE>LOCK</TT_INTERACTION_LOCKABLE>
+				</UseInputEvent>
+		
+			<!--
+			<UseTemplate Name="ASOBO_LIGHTING_Light_Base_Template">
+				<IE_NAME>LANDING_Lights</IE_NAME>
+				<INTERACTION_TYPE>Switch</INTERACTION_TYPE>
+				<LIGHT_TYPE>LANDING</LIGHT_TYPE>
+				<NODE_ID>LIGHTING_Switch_Light_Landing</NODE_ID>
+				<ANIM_NAME>switch_landing_light</ANIM_NAME>
+				<PART_ID>LIGHTING_Switch_Light_Landing</PART_ID>
+				<TT_DESCRIPTION_ID>@TT_Package.LIGHTING_SWITCH_LIGHT_LANDING_ACTION_SET</TT_DESCRIPTION_ID>
+				<TOOLTIP_TITLE>@TT_Package.LIGHTING_SWITCH_LIGHT_LANDING_TITLE</TOOLTIP_TITLE>
+				<TT_VALUE>(I:LANDING_LIGHTS_SWITCH_ON) @TT_OnOff_Cond</TT_VALUE>
+				<TT_VALUE_IS_DYNAMIC>True</TT_VALUE_IS_DYNAMIC>
+				<SET_STATE_ON>1 (&gt;I:LANDING_LIGHTS_SWITCH_ON)</SET_STATE_ON>
+				<SET_STATE_OFF>0 (&gt;I:LANDING_LIGHTS_SWITCH_ON)</SET_STATE_OFF>
+				<GET_STATE_EXTERNAL>(I:LANDING_LIGHTS_SWITCH_ON) sp0</GET_STATE_EXTERNAL>
+				<OVERRIDE_ANIM_CODE>(I:LANDING_LIGHTS_SWITCH_ON) 100 *</OVERRIDE_ANIM_CODE>
+				<ANIM_CODE>(I:LANDING_LIGHTS_SWITCH_ON) 100 *</ANIM_CODE>
+			</UseTemplate>
+			-->
+			<!--
+			<UseTemplate Name="ASOBO_LIGHTING_Switch_Light_Landing_Template">
+				<INTERACTION_TYPE>Switch</INTERACTION_TYPE>
+				<LIGHT_TYPE>LANDING</LIGHT_TYPE>
+				<NODE_ID>LIGHTING_Switch_Light_Landing</NODE_ID>
+				<ANIM_NAME>switch_landing_light</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_LIGHTING_Switch_Potentiometer_Template">
+				<NODE_ID>LIGHTING_Switch_Light_Pulse</NODE_ID>			
+				<ANIM_NAME>switch_wig_wag</ANIM_NAME>
+				<PART_ID>LIGHTING_Push_Pulse</PART_ID>
+				<TOOLTIP_TITLE>@TT_Package.LIGHTING_SWITCH_LIGHT_PULSE_TITLE</TOOLTIP_TITLE>
+				<TT_DESCRIPTION_ID>@TT_Package.LIGHTING_SWITCH_LIGHT_PULSE_ACTION</TT_DESCRIPTION_ID>
+				<INVERT_ANIM>True</INVERT_ANIM>
+				<POTENTIOMETER>7</POTENTIOMETER>
+				<ID>7</ID>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_GT_Update">
+				<FREQUENCY>2</FREQUENCY>
+					<UPDATE_CODE>
+						(A:LIGHT LANDING ON,bool) if{
+						(A:LIGHT POTENTIOMETER:1, Percent) 99 &gt; if{
+						0 1 (&gt;K:2:LIGHT_POTENTIOMETER_SET)
+						100 2 (&gt;K:2:LIGHT_POTENTIOMETER_SET)
+						}
+						els{
+						100 1 (&gt;K:2:LIGHT_POTENTIOMETER_SET)
+						0 2 (&gt;K:2:LIGHT_POTENTIOMETER_SET)
+						}
+						}
+					</UPDATE_CODE>
+			</UseTemplate>
+			<UseInputEvent ID="PROCEDURE">
+				<INPUT_EVENT_ID_SOURCE>PROCEDURE</INPUT_EVENT_ID_SOURCE>
+				<IE_NAME>Toggle_Landing_Light</IE_NAME>
+				<SET_ARG_COUNT>1</SET_ARG_COUNT>
+					<BINDING_SET_0>L0</BINDING_SET_0>
+					<BINDING_SET_0_PARAM_0>1</BINDING_SET_0_PARAM_0>
+					<BINDING_SET_0_EVENT_ID>LANDING_LIGHTS_TOGGLE</BINDING_SET_0_EVENT_ID>
+					<BINDING_SET_0_EVENT_ID_ONLY>True</BINDING_SET_0_EVENT_ID_ONLY>
+					<BINDING_SET_1>L1</BINDING_SET_1>
+					<BINDING_SET_1_PARAM_0>2</BINDING_SET_1_PARAM_0>
+					<BINDING_SET_1_EVENT_ID>ALL_LIGHTS_TOGGLE</BINDING_SET_1_EVENT_ID>
+					<BINDING_SET_1_EVENT_ID_ONLY>True</BINDING_SET_1_EVENT_ID_ONLY>
+				<INC_CODE>1 (&gt;B:#INPUT_EVENT_ID_SOURCE#_#IE_NAME#_Set)</INC_CODE>
+				<DEC_CODE>0 (&gt;B:#INPUT_EVENT_ID_SOURCE#_#IE_NAME#_Set)</DEC_CODE>
+				<SET_CODE>
+					p0 2 == if{
+						(&gt;K:ALL_LIGHTS_TOGGLE)
+						(A:LIGHT STROBE:1, Bool) (I:LANDING_LIGHTS_SWITCH_ON, Bool) == if{ quit }
+					}
+					(I:LANDING_LIGHTS_SWITCH_ON) 1 == if{ 0 (&gt;I:LANDING_LIGHTS_SWITCH_ON) }
+					els{ 1 (&gt;I:LANDING_LIGHTS_SWITCH_ON) }
+				</SET_CODE>
+				<TT_DESCRIPTION>@TT_Package.GT_STATE_NA</TT_DESCRIPTION> <TT_DESCRIPTION_IS_DYNAMIC>False</TT_DESCRIPTION_IS_DYNAMIC>
+				<TT_VALUE>@TT_Package.GT_STATE_NA</TT_VALUE> <TT_VALUE_IS_DYNAMIC>False</TT_VALUE_IS_DYNAMIC>
+				<TT_ICON>PUSH</TT_ICON> <TT_INTERACTION>PRIMARY_DOWN</TT_INTERACTION> <TT_INTERACTION_LOCKABLE>LOCK</TT_INTERACTION_LOCKABLE>
+			</UseInputEvent>
+			-->
+		</Component>
+		
+	<Component ID="FX_SMOKE_ID">
+		<Component ID="FX_SMOKE_ID_NODE" Node="NODE_Smoke">
+			<UseTemplate Name="ASOBO_GT_FX">
+				<FX_CODE>(L:SMOKE RED ACTIVE,number) 1 ==</FX_CODE>
+				<FX_GUID>{C4A0D249-1F33-4581-99C4-2DF4FC625C6F}</FX_GUID>
+			</UseTemplate>
+		</Component>
+	</Component>
+
+	</Behaviors>
+	
+</ModelInfo>

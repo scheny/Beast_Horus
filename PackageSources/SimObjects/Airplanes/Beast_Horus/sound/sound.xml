@@ -4,25 +4,25 @@
 <SoundInfo Version="0.1">
 
 	<WwisePackages>
-		<MainPackage Name="Asobo_CJ4"/>
+		<MainPackage Name="Asobo_L39_Reno_Common"/>
 	</WwisePackages>
 
   <AcousticParameters>
-      <Parameter Name="ReverberationPreset" ShareSetInside="rev_inside_default"/>
-      <Parameter Name="Insulation_ExitClosed" Value="-24"/>
-      <Parameter Name="Insulation_ExitOpen" Value="-12"/>
+      <Parameter Name="ReverberationPreset" ShareSetInside="rev_inside_l39_albatros_at4022"/>
+      <Parameter Name="Insulation_ExitClosed" Value="-15"/>
+      <Parameter Name="Insulation_ExitOpen" Value="0"/>
   </AcousticParameters>
   
-<!-- AlwaysPlaySounds ========================================================================================== -->  
+<!-- AlwaysPlaySounds ========================================================================================== -->
 
-  <AlwaysPlaySounds>    
-
-    <Sound WwiseData="true" WwiseEvent="YOKE_MOVEMENT" ViewPoint="Inside" NodeName="HANDLING_YOKE_HIDER_1_ADD_2">
+  <AlwaysPlaySounds>  
+    
+    <Sound WwiseData="true" WwiseEvent="YOKE_MOVEMENT" ViewPoint="Inside" NodeName="HANDLING_YOKE_1">
       <WwiseRTPC SimVar="YOKE X POSITION" Units="PERCENT" Index="0" Derived="true" RTPCName="SIMVAR_YOKE_X_POSITION_DERIVED"/>
       <WwiseRTPC SimVar="YOKE Y POSITION" Units="PERCENT" Index="0" Derived="true" RTPCName="SIMVAR_YOKE_Y_POSITION_DERIVED"/>
     </Sound>
 
-    <Sound WwiseData="true" WwiseEvent="rattle_kinematic">
+    <Sound WwiseData="true" WwiseEvent="rattle_kinematic" NodeName="LOD_Z#0993">
       <WwiseRTPC SimVar="ROTATION VELOCITY BODY X" Units="PERCENT" Index="0" RTPCName="SIMVAR_ROTATION_VELOCITY_BODY_X"/>
       <WwiseRTPC SimVar="ROTATION VELOCITY BODY Y" Units="PERCENT" Index="0" RTPCName="SIMVAR_ROTATION_VELOCITY_BODY_Y"/>
       <WwiseRTPC SimVar="ROTATION VELOCITY BODY Z" Units="PERCENT" Index="0" RTPCName="SIMVAR_ROTATION_VELOCITY_BODY_Z"/>            
@@ -30,10 +30,12 @@
 
   </AlwaysPlaySounds>
 
-<!-- TriggerSounds ========================================================================================== -->  
+<!-- TriggerSounds ========================================================================================== -->
 
   <WindSounds>
-    <Sound WwiseEvent="wind_sound" WwiseData="true" />    
+    <Sound WwiseEvent="wind_sound" WwiseData="true" >    
+		<WwiseRTPC SimVar="G FORCE" Units="G FORCE" Index="0" RTPCName="SIMVAR_G_FORCE" RTPCAttackTime="1" RTPCReleaseTime="1" />
+	</Sound> 	
   </WindSounds> 
    
    <GroundSounds>
@@ -49,32 +51,54 @@
 		<WwiseRTPC SimVar="WHEEL RPM" Units="RPM" Index="2" Derived="true" RTPCName="SIMVAR_WHEEL_RPM_DERIVED"/>
 		<WwiseRTPC SimVar="VERTICAL SPEED" Units="FEET PER MINUTE" Derived="true" Index="0" RTPCName="SIMVAR_VERTICAL_SPEED_DERIVED" />
 	</Sound>
-    <Sound WwiseEvent="GROUND_ROLL" WwiseData="true" FadeOutType="2" FadeOutTime="0.2"/>
-    <Sound WwiseEvent="LEFT_WING_SCRAPE" ContinuousStopDelay="0.25" FadeOutType="2" FadeOutTime="0.25"   WwiseData="true" NodeName="AILERON_L"/>
-    <Sound WwiseEvent="RIGHT_WING_SCRAPE" ContinuousStopDelay="0.25" FadeOutType="2" FadeOutTime="0.25"  WwiseData="true" NodeName="AILERON_R"/>
-    <Sound WwiseEvent="FUSELAGE_SCRAPE" ContinuousStopDelay="0.5" FadeOutType="1" FadeOutTime="0.1" WwiseData="true" />
+    <Sound WwiseEvent="GROUND_ROLL" FadeOutType="2" FadeOutTime="0.2" WwiseData="true" />
+    <Sound WwiseEvent="RIGHT_WING_SCRAPE" WwiseData="true" />
+    <Sound WwiseEvent="LEFT_WING_SCRAPE" WwiseData="true" />
+    <Sound WwiseEvent="FUSELAGE_SCRAPE" WwiseData="true" />
   </GroundSounds>
   
-  <MiscellaneousSounds>
-    <Sound WwiseEvent="STALL_WARNING" WwiseData="true" ViewPoint="Inside"/>
-	<Sound WwiseEvent="AP_PREFLIGHT_CHECK_OVER" WwiseData="true" />
-	<Sound WwiseEvent="OVERSPEED_WARNING_SOUND" WwiseData="true" />
-  </MiscellaneousSounds>
-  
   <EngineSoundPresets>
-    <Sound WwiseEvent="Combustion" ConeHeading="180" RPMMin="1" WwiseData="true" EngineIndex="1" >
-		<WwiseRTPC SimVar="GENERAL ENG COMBUSTION" Units="BOOL" Index="1" RTPCName="SIMVAR_GENERAL_ENG_COMBUSTION_A01_R4"/>
-	</Sound>
-    <Sound WwiseEvent="Combustion" ConeHeading="180" RPMMin="1" WwiseData="true" EngineIndex="2" >
-		<WwiseRTPC SimVar="GENERAL ENG COMBUSTION" Units="BOOL" Index="2" RTPCName="SIMVAR_GENERAL_ENG_COMBUSTION_A01_R4"/>
-	</Sound>
-    <Sound WwiseEvent="JetWhine" WwiseData="true" EngineIndex="1" RPMMin="1"/>
-    <Sound WwiseEvent="JetWhine" WwiseData="true" EngineIndex="2" RPMMin="1"/>
-  </EngineSoundPresets>
 
-<!-- SimvarSounds ========================================================================================== -->   
+	<Sound WwiseEvent="JetWhine" WwiseData="true" EngineIndex="1" RPMMin="1" FadeOutTime="10">
+		<WwiseRTPC SimVar="TURB ENG N2" Units="PERCENT" Index="1" RTPCName="SIMVAR_TURB_ENG_N2"  RTPCReleaseTime="1" RTPCAttackTime="1"/>
+		<WwiseRTPC SimVar="AIRSPEED MACH" Units="MACH" Index="1" RTPCName="SIMVAR_AIRSPEED_MACH"/>
+	</Sound>
+	
+	<Sound WwiseEvent="JetWhine" CustomSuffix="outside_back" WwiseData="true" EngineIndex="1" RPMMin="1" ConeHeading="180" FadeOutTime="10" >
+		<WwiseRTPC SimVar="TURB ENG N2" Units="PERCENT" Index="1" RTPCName="SIMVAR_TURB_ENG_N2"  RTPCReleaseTime="1" RTPCAttackTime="1"/>
+		<WwiseRTPC SimVar="AIRSPEED MACH" Units="MACH" Index="1" RTPCName="SIMVAR_AIRSPEED_MACH"/>
+	</Sound>
+
+	<Sound WwiseEvent="Shutdown" WwiseData="true" EngineIndex="1" RPMMin="18000" FadeOutTime="10" />
+	<Sound WwiseEvent="Shutdown" CustomSuffix="outside_back" WwiseData="true" EngineIndex="1" RPMMin="18000" ConeHeading="180" FadeOutTime="10" />	
+  </EngineSoundPresets>
+  
+
+ <!-- SimvarSounds ========================================================================================== -->  
     
   <SimVarSounds> 
+  
+    <Sound WwiseData="true" WwiseEvent="apu" ConePitch="90" ContinuousStopDelay="5" FadeOutTime="2" SimVar="APU PCT RPM" Units="PERCENT" Index="0"> 
+      <WwiseRTPC SimVar="APU PCT RPM" Units="PERCENT" Index="0" RTPCName="SIMVAR_APU_PCT_RPM" />
+      <Range LowerBound="1.0" />
+    </Sound>
+	
+	<Sound WwiseData="true" WwiseEvent="eng_faraway_back" ConeHeading="180" SimVar="TURB ENG N1" Units="PERCENT" Index="1" ViewPoint="Outside" FadeOutTime="1" FadeOutType="2">
+	  <Range LowerBound="1" />
+      <WwiseRTPC SimVar="GENERAL ENG PCT MAX RPM" Units="PERCENT" Index="1" RTPCName="SIMVAR_GENERAL_ENG_PCT_MAX_RPM" />  
+      <WwiseRTPC SimVar="AIRSPEED TRUE" Units="knots" Index="1" RTPCName="SIMVAR_AIRSPEED_TRUE"/>
+	  <WwiseRTPC SimVar="TURB ENG N1" Units="PERCENT" Index="1" RTPCName="SIMVAR_TURB_ENG_N1"/>
+	  <WwiseRTPC SimVar="PLANE ALT ABOVE GROUND" Units="FEET" Index="0" RTPCName="SIMVAR_PLANE_ALT_ABOVE_GROUND" />
+    </Sound>
+	
+	<Sound WwiseData="true" WwiseEvent="eng_faraway_front" ConeHeading="0" SimVar="TURB ENG N1" Units="PERCENT" Index="1" ViewPoint="Outside" FadeOutTime="1" FadeOutType="2">
+	  <Range LowerBound="1" />
+      <WwiseRTPC SimVar="GENERAL ENG PCT MAX RPM" Units="PERCENT" Index="1" RTPCName="SIMVAR_GENERAL_ENG_PCT_MAX_RPM" />  
+      <WwiseRTPC SimVar="AIRSPEED TRUE" Units="knots" Index="1" RTPCName="SIMVAR_AIRSPEED_TRUE"/>
+	  <WwiseRTPC SimVar="TURB ENG N1" Units="PERCENT" Index="1" RTPCName="SIMVAR_TURB_ENG_N1"/>
+	  <WwiseRTPC SimVar="PLANE ALT ABOVE GROUND" Units="FEET" Index="0" RTPCName="SIMVAR_PLANE_ALT_ABOVE_GROUND" />
+    </Sound>	
+
     
   <!-- FLIGHT CONTROL SURFACES SOUNDS ====================================================================== -->  
     
@@ -94,93 +118,63 @@
       <WwiseRTPC SimVar="ELEVATOR POSITION" Units="PERCENT" Index="0" RTPCName="SIMVAR_ELEVATOR_POSITION" />
     </Sound>
     
-    <Sound WwiseData="true" WwiseEvent="flaps_left" NodeName="FLAP_L" ContinuousStopDelay="1.0" SimVar="TRAILING EDGE FLAPS LEFT PERCENT" Units="PERCENT" Index="0">
-	  <Requires SimVar="FLAP DAMAGE BY SPEED" Units="BOOL" Index="0">
-        <Range UpperBound="0" />
-      </Requires>	
+    <Sound WwiseData="true" WwiseEvent="flaps_left" NodeName="WINGFLAPSHYDRAULIC_L_04" ContinuousStopDelay="1.0" SimVar="TRAILING EDGE FLAPS LEFT PERCENT" Units="PERCENT" Index="0">
       <WwiseRTPC SimVar="TRAILING EDGE FLAPS LEFT PERCENT" Units="PERCENT" Derived="true" Index="0" RTPCName="SIMVAR_TRAILING_EDGE_FLAPS_LEFT_PERCENT_DERIVED" />
     </Sound>
     
-    <Sound WwiseData="true" WwiseEvent="flaps_right" NodeName="FLAP_R" ContinuousStopDelay="1.0" SimVar="TRAILING EDGE FLAPS RIGHT PERCENT" Units="PERCENT" Index="0">
-      <Requires SimVar="FLAP DAMAGE BY SPEED" Units="BOOL" Index="0">
-        <Range UpperBound="0" />
-      </Requires>
+    <Sound WwiseData="true" WwiseEvent="flaps_right" NodeName="WINGFLAPSHYDRAULIC_R_04" ContinuousStopDelay="1.0" SimVar="TRAILING EDGE FLAPS RIGHT PERCENT" Units="PERCENT" Index="0">
       <WwiseRTPC SimVar="TRAILING EDGE FLAPS RIGHT PERCENT" Units="PERCENT" Derived="true" Index="0" RTPCName="SIMVAR_TRAILING_EDGE_FLAPS_RIGHT_PERCENT_DERIVED" />
     </Sound>
     
-    <Sound WwiseEvent="GEAR_MOVEMENT" WwiseData="true" FadeOutType="2" FadeOutTime="0.1" SimVar="GEAR TOTAL PCT EXTENDED" Units="PERCENT">
-      <WwiseRTPC SimVar="GEAR TOTAL PCT EXTENDED" Units="PERCENT" Index="0" RTPCName="SIMVAR_GEAR_TOTAL_PCT_EXTENDED" />
-      <WwiseRTPC SimVar="GEAR TOTAL PCT EXTENDED" Units="PERCENT" Derived="true" Index="0" RTPCName="SIMVAR_GEAR_TOTAL_PCT_EXTENDED_DERIVED" />
-    </Sound> 
+    <Sound WwiseEvent="GEAR_MOVEMENT" WwiseData="true" FadeOutType="2" FadeOutTime="0.1" ContinuousStopDelay="1" SimVar="GEAR LEFT POSITION" Units="PERCENT">
+      <WwiseRTPC SimVar="GEAR LEFT POSITION" Units="PERCENT" Derived="true" Index="0" RTPCName="SIMVAR_GEAR_LEFT_POSITION_DERIVED" />
+    </Sound>    
 
-  	<!-- COCKPIT LOOPS SOUNDS ==================================================================================-->    
-       
-    <Sound WwiseData="true" WwiseEvent="battery_on" NodeName="MFD_SCREEN_1" ContinuousStopDelay="0.2" FadeOutType="2" FadeOutTime="5" SimVar="ELECTRICAL MASTER BATTERY" Units="BOOL" Index="0">
-	  <WwiseRTPC SimVar="ELECTRICAL MASTER BATTERY" Units="BOOL" Index="0" RTPCName="SIMVAR_ELECTRICAL_MASTER_BATTERY_INTERPOLATION_A4_R4" />
+  	<!-- COCKPIT LOOPS SOUNDS ==================================================================================-->   
+
+    <Sound WwiseData="true" WwiseEvent="battery_on" Continuous="false" SimVar="ELECTRICAL MASTER BATTERY" Units="BOOL" Index="1">
+        <Range LowerBound="1" />
+    </Sound>   
+	
+    <Sound WwiseData="true" WwiseEvent="gyro_sound" ContinuousStopDelay="8" SimVar="CIRCUIT AVIONICS ON" Units="BOOL" Index="1" BreakOnStop="true" NodeName="INSTRUMENT_ATTITUDE_INDICATOR_KNOB_1">
+	  <WwiseRTPC SimVar="CIRCUIT AVIONICS ON" Units="BOOL" Index="1" RTPCName="SIMVAR_CIRCUIT_AVIONICS_ON" RTPCAttackTime="1" RTPCReleaseTime="2" />
       <Range LowerBound="1.0" />
-    </Sound>     
-    	
-	<!-- Fuel pump ========================================================================================== -->
+    </Sound>   
 	
-	<Sound WwiseEvent="fuel_pump_1" WwiseData="true" FadeOutType="2" FadeOutTime="0.2" SimVar="GENERAL ENG FUEL PUMP ON" Units="BOOLEAN" NodeName="CABIN2_CABIN_BACK"  Index="1">
+	<Sound WwiseData="true" WwiseEvent="inverter_on" ContinuousStopDelay="8" BreakOnstop="true" SimVar="CIRCUIT AVIONICS ON" Units="BOOL" Index="1">
+	<WwiseRTPC SimVar="CIRCUIT AVIONICS ON" Units="BOOL" Index="1" RTPCName="SIMVAR_CIRCUIT_AVIONICS_ON" RTPCAttackTime="1" RTPCReleaseTime="2" />
       <Range LowerBound="1" />
-      <Requires SimVar="ELECTRICAL MASTER BATTERY" Units="BOOLEAN" Index="1">
-        <Range LowerBound="1" />
-      </Requires>      
-	  <WwiseRTPC SimVar="GENERAL ENG FUEL PUMP ON" Units="BOOL" Index="1" RTPCName="SIMVAR_GENERAL_ENG_FUEL_PUMP_ON_INTERPOLATION_A1_R1"/>
-      <WwiseRTPC SimVar="GENERAL ENG STARTER ACTIVE" Units="BOOL" Index="1" RTPCName="SIMVAR_GENERAL_ENG_STARTER_ACTIVE_ON_INTERPOLATION_A1_R1"/>
-    </Sound>	
+    </Sound>  
+
+	<Sound WwiseData="true" WwiseEvent="avionics_on" ContinuousStopDelay="8" SimVar="CIRCUIT AVIONICS ON" Units="BOOL" Index="2" NodeName="AS530_PUSH_OBS">
+	<WwiseRTPC SimVar="CIRCUIT AVIONICS ON" Units="BOOL" Index="2" RTPCName="SIMVAR_CIRCUIT_AVIONICS_ON" RTPCAttackTime="1" RTPCReleaseTime="2" />
+      <Range LowerBound="1" />
+    </Sound>   
 	
-	<Sound WwiseEvent="fuel_pump_2" WwiseData="true" FadeOutType="2" FadeOutTime="0.2" SimVar="GENERAL ENG FUEL PUMP ON" Units="BOOLEAN" NodeName="CABIN2_CABIN_BACK" Index="2">
+	<Sound WwiseData="true" WwiseEvent="engine_on" FadeOutType="2" FadeOutTime="1" SimVar="CIRCUIT AVIONICS ON" Units="BOOL" Index="3" >
       <Range LowerBound="1" />
-      <Requires SimVar="ELECTRICAL MASTER BATTERY" Units="BOOLEAN" Index="1">
-        <Range LowerBound="1" />
-      </Requires>
-	  <WwiseRTPC SimVar="GENERAL ENG FUEL PUMP ON" Units="BOOL" Index="2" RTPCName="SIMVAR_GENERAL_ENG_FUEL_PUMP_ON_INTERPOLATION_A1_R1"/>
-      <WwiseRTPC SimVar="GENERAL ENG STARTER ACTIVE" Units="BOOL" Index="2" RTPCName="SIMVAR_GENERAL_ENG_STARTER_ACTIVE_ON_INTERPOLATION_A1_R1"/>
+    </Sound>   
+	
+    <!-- INSTRUMENTS FOLEYS  =========================================================================  -->   
+
+    <Sound WwiseData="true" WwiseEvent="YOKE_STOPS_X" SimVar="YOKE X POSITION" Units="PERCENT" Index="0" ViewPoint="Inside" NodeName="HANDLING_YOKE_HIDER_1" Continuous="false" BreakOnStop="true">
+      <WwiseRTPC SimVar="YOKE X POSITION" Units="PERCENT" Index="0" Derived="true" RTPCName="SIMVAR_YOKE_X_POSITION_DERIVED"/>
+        <Range LowerBound="80" />
+		<Range UpperBound="-80" />
     </Sound>
 	
-    <!-- INSTRUMENTS FOLEYS  =========================================================================  -->    
-        
-    <Sound WwiseData="true" WwiseEvent="lever_throttle_01" ViewPoint="Inside" NodeName="ENGINE_LEVER_THROTTLE_1" SimVar="GENERAL ENG THROTTLE LEVER POSITION" Units="PERCENT" Index="1" ContinuousStopDelay="1.0">
+    <Sound WwiseData="true" WwiseEvent="YOKE_STOPS_Y" SimVar="YOKE Y POSITION" Units="PERCENT" Index="0" ViewPoint="Inside" NodeName="HANDLING_YOKE_HIDER_1" Continuous="false" BreakOnStop="true">
+      <WwiseRTPC SimVar="YOKE Y POSITION" Units="PERCENT" Index="0" Derived="true" RTPCName="SIMVAR_YOKE_Y_POSITION_DERIVED"/>
+        <Range LowerBound="80" />
+		<Range UpperBound="-80" />
+    </Sound>
+	
+    <Sound WwiseData="true" WwiseEvent="lever_throttle" ViewPoint="Inside" NodeName="ENGINE_LEVER_THROTTLE_1" SimVar="GENERAL ENG THROTTLE LEVER POSITION" Units="PERCENT" Index="1" ContinuousStopDelay="1.0">
       <WwiseRTPC SimVar="GENERAL ENG THROTTLE LEVER POSITION" Units="PERCENT" Index="1" Derived="true" RTPCName="SIMVAR_GENERAL_ENG_THROTTLE_LEVER_POSITION_DERIVED" />
       <WwiseRTPC SimVar="GENERAL ENG THROTTLE LEVER POSITION" Units="PERCENT" Index="1" RTPCName="SIMVAR_GENERAL_ENG_THROTTLE_LEVER_POSITION" />
     </Sound>
-	
-    <Sound WwiseData="true" WwiseEvent="lever_throttle_02" ViewPoint="Inside" NodeName="ENGINE_LEVER_THROTTLE_2" SimVar="GENERAL ENG THROTTLE LEVER POSITION" Units="PERCENT" Index="2" ContinuousStopDelay="1.0">
-      <WwiseRTPC SimVar="GENERAL ENG THROTTLE LEVER POSITION" Units="PERCENT" Index="2" Derived="true" RTPCName="SIMVAR_GENERAL_ENG_THROTTLE_LEVER_POSITION_DERIVED" />
-      <WwiseRTPC SimVar="GENERAL ENG THROTTLE LEVER POSITION" Units="PERCENT" Index="2" RTPCName="SIMVAR_GENERAL_ENG_THROTTLE_LEVER_POSITION" />
-    </Sound>
-	
-   	
-	<Sound WwiseData="true" WwiseEvent="trim_rudder_lever" ViewPoint="Inside" NodeName="HANDLING_KNOB_RUDDERTRIM" ContinuousStopDelay="1.0" SimVar="RUDDER TRIM PCT" Units="PERCENT" Index="0">
-      <WwiseRTPC SimVar="RUDDER TRIM PCT" Units="PERCENT" Index="0" Derived="true" RTPCName="SIMVAR_RUDDER_TRIM_PCT_DERIVED" />
-    </Sound>
-	
-	<Sound WwiseData="true" WwiseEvent="speedbrake_lever" ViewPoint="Inside" NodeName="HANDLING_LEVER_SPOILERS" SimVar="SPOILERS HANDLE POSITION" Units="PERCENT" Index="1">
-      <WwiseRTPC SimVar="SPOILERS HANDLE POSITION" Units="PERCENT" Index="0" Derived="true" RTPCName="SIMVAR_SPOILERS_HANDLE_POSITION_DERIVED" />
-	</Sound>
-	
-	<Sound WwiseData="true" WwiseEvent="flaps_lever" ViewPoint="Inside" NodeName="HANDLING_LEVER_FLAPS" Continuous="false" SimVar="FLAPS HANDLE PERCENT" Units="PERCENT" Index="1" >
-	</Sound>
-    
-    <Sound WwiseData="true" WwiseEvent="pedal_movement" ViewPoint="Inside" NodeName="HANDLING_YOKE_HIDER_1_ADD_2" ContinuousStopDelay="1.0" SimVar="RUDDER PEDAL POSITION" Units="PERCENT" Index="0">
-      <WwiseRTPC SimVar="RUDDER PEDAL POSITION" Units="PERCENT" Index="0" Derived="true" RTPCName="SIMVAR_RUDDER_PEDAL_POSITION_DERIVED" />
-    </Sound>   
-	
-	<Sound WwiseData="true" WwiseEvent="left_brake_movement"  FadeOutType="2" FadeOutTime="0.5" ViewPoint="Inside" NodeName="HANDLING_YOKE_HIDER_1_ADD_2" ContinuousStopDelay="0.3" SimVar="BRAKE LEFT POSITION" Units="PERCENT" Index="0">
-      <WwiseRTPC SimVar="BRAKE LEFT POSITION" Units="PERCENT" Index="0" Derived="true" RTPCName="SIMVAR_BRAKE_LEFT_POSITION_DERIVED" />   
-    </Sound>   
-		
-	<Sound WwiseData="true" WwiseEvent="RIGHT_brake_movement"  FadeOutType="2" FadeOutTime="0.5" ViewPoint="Inside" NodeName="HANDLING_YOKE_HIDER_1_ADD_2" ContinuousStopDelay="0.3" SimVar="BRAKE RIGHT POSITION" Units="PERCENT" Index="0">
-      <WwiseRTPC SimVar="BRAKE RIGHT POSITION" Units="PERCENT" Index="0" Derived="true" RTPCName="SIMVAR_BRAKE_RIGHT_POSITION_DERIVED" />   
-    </Sound>   
-	
-	<Sound WwiseData="true" WwiseEvent="parking_brake_movement" ViewPoint="Inside" NodeName="HANDLING_YOKE_HIDER_1_ADD_2" ContinuousStopDelay="0.3" SimVar="BRAKE PARKING POSITION" Units="PERCENT" Index="0">
-      <WwiseRTPC SimVar="BRAKE PARKING POSITION" Units="PERCENT" Index="0" Derived="true" RTPCName="SIMVAR_BRAKE_PARKING_POSITION_DERIVED" />    
-    </Sound>  
-    
-	  <!-- RATTLES ========================================================================================== --> 
+   
+	<!-- RATTLES ========================================================================================== --> 
 
     <Sound WwiseData="true" WwiseEvent="rattle_ground" ViewPoint="Inside" FadeOutType="2" FadeOutTime="0.5" ContinuousStopDelay="0.5" SimVar="SIM ON GROUND" Units="BOOLEAN" Index="0">
       <Range LowerBound="1.0" />
@@ -189,8 +183,7 @@
       </Requires>
 	  <WwiseRTPC SimVar="GROUND VELOCITY" Units="METERS PER SECOND" Index="0" RTPCName="SIMVAR_GROUND_VELOCITY" />
 	  <WwiseRTPC SimVar="SURFACE TYPE" Units="ENUM" Index="0" RTPCName="SIMVAR_SURFACE_TYPE" />
-	  <WwiseRTPC SimVar="GENERAL ENG COMBUSTION SOUND PERCENT" Units="PERCENT OVER 100" Index="1" RTPCName="SIMVAR_GENERAL_ENG_COMBUSTION_SOUND_PERCENT" />	 
-      <WwiseRTPC SimVar="GEAR TOTAL PCT EXTENDED" Units="PERCENT" Index="0" RTPCName="SIMVAR_GEAR_TOTAL_PCT_EXTENDED" /> 	  
+	  <WwiseRTPC SimVar="GENERAL ENG COMBUSTION SOUND PERCENT" Units="PERCENT OVER 100" Index="1" RTPCName="SIMVAR_GENERAL_ENG_COMBUSTION_SOUND_PERCENT" />	  
     </Sound> 
 	
 	<Sound WwiseData="true" WwiseEvent="rattle_overspeed" SimVar="AIRSPEED TRUE" Units="KNOTS" Index="0">
@@ -198,7 +191,7 @@
 	  <WwiseRTPC SimVar="ROTATION VELOCITY BODY X" Units="PERCENT" Index="0" RTPCName="SIMVAR_ROTATION_VELOCITY_BODY_X"/>
       <WwiseRTPC SimVar="ROTATION VELOCITY BODY Y" Units="PERCENT" Index="0" RTPCName="SIMVAR_ROTATION_VELOCITY_BODY_Y"/>
       <WwiseRTPC SimVar="ROTATION VELOCITY BODY Z" Units="PERCENT" Index="0" RTPCName="SIMVAR_ROTATION_VELOCITY_BODY_Z"/> 
-      <Range LowerBound="400" />
+      <Range LowerBound="450" />
     </Sound> 	
 	
   	<!-- RAIN ========================================================================================== --> 
@@ -208,160 +201,245 @@
 	    <WwiseRTPC SimVar="AMBIENT PRECIP RATE" Units="millimeters of water" Index="0" RTPCName="SIMVAR_AMBIENT_PRECIP_RATE"/> 
         <WwiseRTPC SimVar="AIRSPEED TRUE" Units="KNOTS" Index="0" RTPCName="SIMVAR_AIRSPEED_TRUE"/> 
     </Sound> 
-	
-	<!-- MISC SOUNDS ========================================================================================== --> 	
-	
-	<Sound WwiseData="true" WwiseEvent="ap_disengage_sound" NodeName="PUSH_CEILING_TESTLIGHT" Continuous="false" SimVar="AUTOPILOT DISENGAGED" Units="BOOL" Index="0">
-	  <Range LowerBound="1" />
-	  <Requires SimVar="ELECTRICAL MASTER BATTERY" Units="BOOL" Index="0">
-        <Range LowerBound="1" />
-      </Requires>
-    </Sound>
-	
-	<Sound WwiseData="true" WwiseEvent="ap_disengage_sound" NodeName="PUSH_CEILING_TESTLIGHT" Continuous="false" SimVar="AUTOPILOT MASTER" Units="BOOL" Index="0">
-	  <Range UpperBound="0" />
-	  <Requires SimVar="ELECTRICAL MASTER BATTERY" Units="BOOL" Index="0">
-        <Range LowerBound="1" />
-      </Requires>
-    </Sound>
 
   </SimVarSounds>
   
 <!-- AVIONIC SOUNDS ####################################################################################  -->  
+
+	<AvionicSounds> 
+		<Sound WwiseData="true" WwiseEvent="tone_altitude_alert_default" ViewPoint="Inside"/>	
+	</AvionicSounds>
   
-  <AvionicSounds> 
-	<Sound WwiseData="true" WwiseEvent="aural_5ft" /> 
-	<Sound WwiseData="true" WwiseEvent="aural_50ft" /> 	
-	<Sound WwiseData="true" WwiseEvent="aural_100ft" /> 
-	<Sound WwiseData="true" WwiseEvent="aural_200ft" /> 	
-	<Sound WwiseData="true" WwiseEvent="aural_300ft" /> 	
-	<Sound WwiseData="true" WwiseEvent="aural_400ft" /> 
-	<Sound WwiseData="true" WwiseEvent="aural_500ft" /> 
-	<Sound WwiseData="true" WwiseEvent="aural_1000ft" /> 
-	<Sound WwiseData="true" WwiseEvent="aural_stall" />
-	<Sound WwiseData="true" WwiseEvent="aural_pull_up" />
-	<Sound WwiseData="true" WwiseEvent="aural_overspeed" />
-	<Sound WwiseData="true" WwiseEvent="aural_sink_rate" />
-	<Sound WwiseData="true" WwiseEvent="aural_dont_sink" />
-	<Sound WwiseData="true" WwiseEvent="aural_minimums" />
-	<Sound WwiseData="true" WwiseEvent="aural_landing_gear" />
-	<Sound WwiseData="true" WwiseEvent="aural_taws_system_test_ok" ViewPoint="Inside"/>
-	<Sound WwiseData="true" WwiseEvent="aural_warning_ok" ViewPoint="Inside"/> 
-	<Sound WwiseData="true" WwiseEvent="tone_caution" ViewPoint="Inside"/>
-	<Sound WwiseData="true" WwiseEvent="tone_warning" ViewPoint="Inside"/>
-	<Sound WwiseData="true" WwiseEvent="tone_touchscreen_touch" ViewPoint="Inside"/>	
-	<Sound WwiseData="true" WwiseEvent="tone_altitude_alert_default" ViewPoint="Inside"/>	
-  </AvionicSounds>  
-  
-<!-- AnimationSounds ################################################################################# -->   
+<!-- AnimationSounds ####################################################################################-->  
 
   <AnimationSounds>
   
-<!-- COMMON ####################################################################################### -->  
-	<!-- ELECTRICAL ========================================================================================== --> 
-    <Sound WwiseData="true" WwiseEvent="battery_switch" ViewPoint="Inside"/>	  
-    <Sound WwiseData="true" WwiseEvent="alternator_switch" ViewPoint="Inside"/>	      
-	<Sound WwiseData="true" WwiseEvent="avionic_switch" ViewPoint="Inside"/>	  	
-	<Sound WwiseData="true" WwiseEvent="electrical_circuit_switch_on" ViewPoint="Inside"/>	  	
+	<!-- COMMON ===================================================================== -->	
+	<Sound WwiseData="true" WwiseEvent="cover_open" ViewPoint="Inside"/>	   	  
+    <Sound WwiseData="true" WwiseEvent="cover_close" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="covered_open_switch" ViewPoint="Inside"/>	   	  
+    <Sound WwiseData="true" WwiseEvent="covered_close_switch" ViewPoint="Inside"/>	
+    <Sound WwiseData="true" WwiseEvent="gyro_align_push_button_on" ViewPoint="Inside"/>		
+    <Sound WwiseData="true" WwiseEvent="gyro_align_push_button_off" ViewPoint="Inside"/>		
+	
+	<!-- ELECTRICAL ================================================================= --> 	
+    <Sound WwiseData="true" WwiseEvent="alternator_switch_on" ViewPoint="Inside"/>	   	  
+    <Sound WwiseData="true" WwiseEvent="alternator_switch_off" ViewPoint="Inside"/>	   	  	  
+    <Sound WwiseData="true" WwiseEvent="battery_switch_on" ViewPoint="Inside"/>	   	  
+    <Sound WwiseData="true" WwiseEvent="battery_switch_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="avionic_switch_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="avionic_switch_off" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="starter_apu_switch_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="starter_apu_switch_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="starter_switch_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="starter_switch_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="electrical_circuit_switch_on" ViewPoint="Inside"/>
 	<Sound WwiseData="true" WwiseEvent="electrical_circuit_switch_off" ViewPoint="Inside"/>
+
+	<!-- ENGINE ================================================================= --> 
+	<Sound WwiseData="true" WwiseEvent="engine_stop_switch_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="engine_stop_switch_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="engine_turbo_stop_switch_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="engine_turbo_stop_switch_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="engine_vibration_test_push_button_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="engine_vibration_test_push_button_off" ViewPoint="Inside"/>	
 	
-	<!-- Autopilot ========================================================================================== --> 
-	<Sound WwiseData="true" WwiseEvent="autopilot_push_button_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="autopilot_push_button_off" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="autopilot_knob_push_button_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="autopilot_knob_push_button_off" ViewPoint="Inside"/>	  	  	  
-	<Sound WwiseData="true" WwiseEvent="autopilot_knob_turn" ViewPoint="Inside"/>	  		  
-	<Sound WwiseData="true" WwiseEvent="autopilot_speed_knob" ViewPoint="Inside"/>	  		
-	<Sound WwiseData="true" WwiseEvent="autopilot_heading_knob" ViewPoint="Inside"/>	  	  
-	<Sound WwiseData="true" WwiseEvent="autopilot_altitude_100_knob" ViewPoint="Inside"/>	
-	<Sound WwiseData="true" WwiseEvent="autopilot_altitude_knob" ViewPoint="Inside"/>	
-	<Sound WwiseData="true" WwiseEvent="autopilot_verticalspeed_knob" ViewPoint="Inside"/>	  		  
-	<Sound WwiseData="true" WwiseEvent="autopilot_knob" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="autopilot_disconnect_button_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="autopilot_disconnect_button_off" ViewPoint="Inside"/>	  
+	<!-- FUEL ================================================================= --> 	
+    <Sound WwiseData="true" WwiseEvent="fuel_cutoff_switch_on" ViewPoint="Inside"/>	   	  
+    <Sound WwiseData="true" WwiseEvent="fuel_cutoff_switch_off" ViewPoint="Inside"/>	 
 
-	<!-- Navcom ========================================================================================== --> 
-	<Sound WwiseData="true" WwiseEvent="navcom_audio_mute_switch_on" ViewPoint="Inside"/>	  	  	
-	<Sound WwiseData="true" WwiseEvent="navcom_audio_mute_switch_off" ViewPoint="Inside"/>	  	  
-	<Sound WwiseData="true" WwiseEvent="navcom_audio_push_on" ViewPoint="Inside"/>
-	<Sound WwiseData="true" WwiseEvent="navcom_audio_push_off" ViewPoint="Inside"/>	  	  
-	<Sound WwiseData="true" WwiseEvent="navcom_volume_knob_push_button_on" ViewPoint="Inside"/>    
-	<Sound WwiseData="true" WwiseEvent="navcom_volume_knob_push_button_off" ViewPoint="Inside"/>	  	   
-
-	<!--- SAFETY =========================================================================================  -->
-	<Sound WwiseData="true" WwiseEvent="safety_push_button_on" ViewPoint="Inside"/>  
-	<Sound WwiseData="true" WwiseEvent="safety_push_button_off" ViewPoint="Inside"/>	  
-
-	<!--- HANDLING =======================================================================================  -->
-	<Sound WwiseData="true" WwiseEvent="parking_brake_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="parking_brake_switch_off" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="gear_lever" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="elevator_switch" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="aileron_trim_switch" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="secondary_trim_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="secondary_trim_switch_off" ViewPoint="Inside"/>	 	 
-
-	<!--- FUEL ==========================================================================================  -->
-	<Sound WwiseData="true" WwiseEvent="fuel_pump_push_button_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="fuel_pump_push_button_off" ViewPoint="Inside"/>  	
-	<Sound WwiseData="true" WwiseEvent="fuel_pump_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="fuel_pump_switch_off" ViewPoint="Inside"/>  
-	<Sound WwiseData="true" WwiseEvent="fuel_crossfeed_switch" ViewPoint="Inside"/>	 	
-	<Sound WwiseData="true" WwiseEvent="fuel_push_runstop_button_on" ViewPoint="Inside"/>	  	  
-
-	<!--- ENGINE ==========================================================================================  -->
-	<Sound WwiseData="true" WwiseEvent="engine_ignition_button_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="engine_ignition_button_off" ViewPoint="Inside"/>	  			
-	<Sound WwiseData="true" WwiseEvent="engine_start_push_button_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="engine_start_push_button_off" ViewPoint="Inside"/>	  		  	
-
-	<!--- PRESSURIZATION =================================================================================== -->
-	<Sound WwiseData="true" WwiseEvent="pressurization_dump_push_button_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="pressurization_dump_push_button_off" ViewPoint="Inside"/>	  	
-
-	<!--- COVERS ==========================================================================================  -->
-	<Sound WwiseData="true" WwiseEvent="cover_open" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="cover_close" ViewPoint="Inside"/>	  	
-
-	<!--- LIGHTS ==========================================================================================  -->
-	<Sound WwiseData="true" WwiseEvent="wing_light_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="wing_light_switch_off" ViewPoint="Inside"/>	  	 
-	<Sound WwiseData="true" WwiseEvent="lighting_knob_generic" ViewPoint="Inside"/>	  	
-	<Sound WwiseData="true" WwiseEvent="lighting_small_knob_generic" ViewPoint="Inside"/>	  	
-	<Sound WwiseData="true" WwiseEvent="lighting_master_knob" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="beacon_light_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="beacon_light_switch_off" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="taxi_light_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="taxi_light_switch_off" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="logo_light_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="logo_light_switch_off" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="recognition_light_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="recognition_light_switch_off" ViewPoint="Inside"/>	  	
-	<Sound WwiseData="true" WwiseEvent="strobe_light_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="strobe_light_switch_off" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="nav_light_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="nav_light_switch_off" ViewPoint="Inside"/>	  
+	<!-- LIGTHS ===================================================================== --> 		  
 	<Sound WwiseData="true" WwiseEvent="landing_light_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="landing_light_switch_off" ViewPoint="Inside"/>	  
-
-	<!--- DEICE ==========================================================================================  -->
-	<Sound WwiseData="true" WwiseEvent="deice_airframe_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="deice_airframe_switch_off" ViewPoint="Inside"/>	  	
-	<Sound WwiseData="true" WwiseEvent="deice_engine_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="deice_engine_switch_off" ViewPoint="Inside"/>	  	
-	<Sound WwiseData="true" WwiseEvent="deice_pitot_switch_on" ViewPoint="Inside"/>	  
-	<Sound WwiseData="true" WwiseEvent="deice_pitot_switch_off" ViewPoint="Inside"/>
-
-	<!--- FMC ==========================================================================================   -->
-	<Sound WwiseData="true" WwiseEvent="fmc_push_button_on" ViewPoint="Inside"/>  
-	<Sound WwiseData="true" WwiseEvent="fmc_push_button_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="landing_light_switch_off" ViewPoint="Inside"/>	     	  
+	<Sound WwiseData="true" WwiseEvent="taxi_light_switch" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="panel_switch" ViewPoint="Inside"/> 		
+	<Sound WwiseData="true" WwiseEvent="nav_light_switch_on" ViewPoint="Inside"/> 	     
+	<Sound WwiseData="true" WwiseEvent="nav_light_switch_off" ViewPoint="Inside"/>	     	  
+	<Sound WwiseData="true" WwiseEvent="beacon_light_switch_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="beacon_light_switch_off" ViewPoint="Inside"/>	     	  
+	<Sound WwiseData="true" WwiseEvent="strobe_light_switch_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="strobe_light_switch_off" ViewPoint="Inside"/>  	  	  
+	<Sound WwiseData="true" WwiseEvent="cabin_light_switch_on" ViewPoint="Inside"/>      	  
+	<Sound WwiseData="true" WwiseEvent="cabin_light_switch_off" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="nav_light_switch" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="potentiometer_light_switch" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="lighting_knob" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="lighting_knob_generic" ViewPoint="Inside"/>	
 	
-	<!--- AS3000 ==========================================================================================   -->
-	<Sound WwiseData="true" WwiseEvent="as3000_knob_turn" ViewPoint="Inside"/>  
-	<Sound WwiseData="true" WwiseEvent="as3000_push_button_on" ViewPoint="Inside"/>	
-	<Sound WwiseData="true" WwiseEvent="as3000_push_button_off" ViewPoint="Inside"/>
-	<Sound WwiseData="true" WwiseEvent="as3000_joystick" ViewPoint="Inside"/>  
+	<!-- EMERGENCY ================================================================== --> 	
+	<Sound WwiseData="true" WwiseEvent="landing_gear_emergency_lever_on" ViewPoint="Inside"/>	  
+	<Sound WwiseData="true" WwiseEvent="landing_gear_emergency_lever_off" ViewPoint="Inside"/>	    
+	<Sound WwiseData="true" WwiseEvent="emergency_rat_lever_on" ViewPoint="Inside"/>	  
+	<Sound WwiseData="true" WwiseEvent="emergency_rat_lever_off" ViewPoint="Inside"/>		
+	<Sound WwiseData="true" WwiseEvent="emergency_flaps_lever_on" ViewPoint="Inside"/>	  
+	<Sound WwiseData="true" WwiseEvent="emergency_flaps_lever_off" ViewPoint="Inside"/>	   
 
-  </AnimationSounds> 
+	<!-- TRANSPONDER ================================================================ --> 		  	  
+	<Sound WwiseData="true" WwiseEvent="transponder_mode_knob" ViewPoint="Inside"/>	     		  
+	<Sound WwiseData="true" WwiseEvent="transponder_knob_value" ViewPoint="Inside"/>	     	  
+	<Sound WwiseData="true" WwiseEvent="swap_push_button_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="swap_push_button_off" ViewPoint="Inside"/>	   	  
+	<Sound WwiseData="true" WwiseEvent="transponder_push_button_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="transponder_push_button_off" ViewPoint="Inside"/>
+
+	<!-- GNS530 ===================================================================== -->  
+	<Sound WwiseData="true" WwiseEvent="gns530_push_button_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="gns530_push_button_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="gns530_switch_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="gns530_switch_off" ViewPoint="Inside"/> 
+	<Sound WwiseData="true" WwiseEvent="gns530_knob_push_button_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="gns530_knob_push_button_off" ViewPoint="Inside"/> 
+	<Sound WwiseData="true" WwiseEvent="gns530_largeknob_push_button_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="gns530_largeknob_push_button_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="gns530_inner_knob" ViewPoint="Inside"/>
+    <Sound WwiseData="true" WwiseEvent="gns530_outer_knob" ViewPoint="Inside"/>  
+	<Sound WwiseData="true" WwiseEvent="gns530_small_knob" ViewPoint="Inside"/>  
+	<Sound WwiseData="true" WwiseEvent="gns530_smallknob_push_button_on" ViewPoint="Inside"/>
+    <Sound WwiseData="true" WwiseEvent="gns530_smallknob_push_button_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="gns530_knob" ViewPoint="Inside"/>  
+
+	<!-- PRESSURIZATION ============================================================= --> 		
+	<Sound WwiseData="true" WwiseEvent="pressurization_cabinpressdump_switch_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="pressurization_cabinpressdump_switch_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="pressurization_oxygen_switch_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="pressurization_oxygen_switch_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="pressurization_lever_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="pressurization_lever_off" ViewPoint="Inside"/>
+	
+	<!-- PRESSURIZATION ============================================================= --> 		
+	<Sound WwiseData="true" WwiseEvent="safety_push_button_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="safety_push_button_off" ViewPoint="Inside"/>	
+	
+	<!-- HANDLING ===================================================================== --> 	
+	<Sound WwiseData="true" WwiseEvent="flaps_push_button_on" ViewPoint="Inside"/>	   	  	  	 
+	<Sound WwiseData="true" WwiseEvent="flaps_push_button_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="spoilers_switch" ViewPoint="Inside"/>	   	  	  	 
+	<Sound WwiseData="true" WwiseEvent="spoilers_switch_push_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="spoilers_switch_push_off" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="handling_yoke_joystick" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="trim_joystick" ViewPoint="Inside"/>	
+	
+	<!-- LEVER ======================================================================= --> 		  
+	<Sound WwiseData="true" WwiseEvent="parking_brake_switch_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="parking_brake_switch_off" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="landing_gear_parkingbrake_switch" ViewPoint="Inside"/>		
+	<Sound WwiseData="true" WwiseEvent="gear_lever_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="gear_lever_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="handling_lever_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="handling_lever_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="canopy_open_lever" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="canopy_close_lever" ViewPoint="Inside"/> 
+	<Sound WwiseData="true" WwiseEvent="canopy_lever_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="canopy_lever_off" ViewPoint="Inside"/> 
+
+	<!-- DEICE ======================================================================= --> 	
+	<Sound WwiseData="true" WwiseEvent="deice_pitot_switch_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="deice_pitot_switch_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="deice_switch_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="deice_switch_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="deice_airframe_switch" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="pitot_heat_switch_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="pitot_heat_switch_off" ViewPoint="Inside"/>	
+	
+	<!-- A225 ===================================================================== -->  
+	<Sound WwiseData="true" WwiseEvent="AS225_push_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="AS225_push_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="AS225_small_knob" ViewPoint="Inside"/>
+	
+	<!-- ASB430 ===================================================================== -->  
+	<Sound WwiseData="true" WwiseEvent="ASB430_push_button_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="ASB430_push_button_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="ASB430_knob_push_button_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="ASB430_knob_push_button_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="ASB430_largeknob_push_button_on" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="ASB430_largeknob_push_button_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="ASB430_inner_knob" ViewPoint="Inside"/> 
+    <Sound WwiseData="true" WwiseEvent="ASB430_outer_knob" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="ASB430_small_knob" ViewPoint="Inside"/>  
+	<Sound WwiseData="true" WwiseEvent="ASB430_knob" ViewPoint="Inside"/>  
+	<Sound WwiseData="true" WwiseEvent="ASB430_smallknob_push_button_on" ViewPoint="Inside"/>
+    <Sound WwiseData="true" WwiseEvent="ASB430_smallknob_push_button_off" ViewPoint="Inside"/>
+	
+	<!-- NAVCOM ========================================================================================== --> 	
+	<Sound WwiseData="true" WwiseEvent="audio_switch_intercom" ViewPoint="Inside"/>	 	
+	<Sound WwiseData="true" WwiseEvent="navcom_audio_push_on" ViewPoint="Inside"/>	   	  
+	<Sound WwiseData="true" WwiseEvent="navcom_audio_push_off" ViewPoint="Inside"/>	   
+	<Sound WwiseData="true" WwiseEvent="navcom_audio_marker_switch_on" ViewPoint="Inside"/>	   	  	  	 
+	<Sound WwiseData="true" WwiseEvent="navcom_audio_marker_switch_off" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="navcom_audio_marker_switch" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="navcom_audio_volume_knob" ViewPoint="Inside"/>	  
+	<Sound WwiseData="true" WwiseEvent="navcom_audio_volume_knob_1" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="navcom_audio_transmission_knob" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="navcom_knob_push_button_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="navcom_knob_push_button_off" ViewPoint="Inside"/>	   	  	  	  
+	<Sound WwiseData="true" WwiseEvent="navcom_frequency_inner_knob" ViewPoint="Inside"/>	   	  	
+	<Sound WwiseData="true" WwiseEvent="navcom_frequency_outer_knob" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="navcom_push_button_on" ViewPoint="Inside"/>	   	  	  	 
+	<Sound WwiseData="true" WwiseEvent="navcom_push_button_off" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="navcom_volume_knob" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="navcom_volume_knob_push_button_on" ViewPoint="Inside"/>	   	  	  	 
+	<Sound WwiseData="true" WwiseEvent="navcom_volume_knob_push_button_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="navcom_switch_on" ViewPoint="Inside"/>	   	  	  	 
+	<Sound WwiseData="true" WwiseEvent="navcom_switch_off" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="com_switch_on" ViewPoint="Inside"/>	   	  	  	 
+	<Sound WwiseData="true" WwiseEvent="com_switch_off" ViewPoint="Inside"/>
+
+    <!-- AS3X (sarance) ==========================================================================================-->	  	
+   <Sound WwiseData="true" WwiseEvent="as3x_joystick" ViewPoint="Inside"/>	  	  
+   <Sound WwiseData="true" WwiseEvent="as3x_knob_push_button_on" ViewPoint="Inside"/>	  	  
+   <Sound WwiseData="true" WwiseEvent="as3x_knob_push_button_off" ViewPoint="Inside"/>	  		  
+   <Sound WwiseData="true" WwiseEvent="as3x_knob_turn" ViewPoint="Inside"/>		  
+   <Sound WwiseData="true" WwiseEvent="as3x_range_push_button_on" ViewPoint="Inside"/>	  		  
+   <Sound WwiseData="true" WwiseEvent="as3x_range_push_button_off" ViewPoint="Inside"/>			  
+   <Sound WwiseData="true" WwiseEvent="as3x_push_button_on" ViewPoint="Inside"/>	  		  
+   <Sound WwiseData="true" WwiseEvent="as3x_push_button_off" ViewPoint="Inside"/>	
+   <Sound WwiseData="true" WwiseEvent="as3x_inner_knob" ViewPoint="Inside"/>
+   <Sound WwiseData="true" WwiseEvent="as3x_outer_knob" ViewPoint="Inside"/>
+   
+    <!-- AS5 (american patriot) ==========================================================================================-->	
+	<Sound WwiseData="true" WwiseEvent="As5_Push_button_on" ViewPoint="Inside"/>	    
+    <Sound WwiseData="true" WwiseEvent="As5_Push_button_off" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="As5_knob" ViewPoint="Inside"/>	 	
+
+    <!-- CLOCK  ==========================================================================================-->		
+	<Sound WwiseData="true" WwiseEvent="clock_push_button_off" ViewPoint="Inside"/>		
+	<Sound WwiseData="true" WwiseEvent="clock_push_button_on" ViewPoint="Inside"/>	
+
+	<!-- TRANSPONDER (american spirit)========================================================================================== --> 		  	  
+	<Sound WwiseData="true" WwiseEvent="transponder_mode_knob" ViewPoint="Inside"/>	     		  
+	<Sound WwiseData="true" WwiseEvent="transponder_knob_value" ViewPoint="Inside"/>	     	  
+	<Sound WwiseData="true" WwiseEvent="swap_push_button_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="swap_push_button_off" ViewPoint="Inside"/>	   	  
+	<Sound WwiseData="true" WwiseEvent="transponder_push_button_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="transponder_push_button_off" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="as21_transponder_code_knob" ViewPoint="Inside"/>	 
+	
+	<!-- AS225 (american spirit)=========================================================================================== --> 		  	  
+	<Sound WwiseData="true" WwiseEvent="AS225_large_knob" ViewPoint="Inside"/>	     		  
+	<Sound WwiseData="true" WwiseEvent="AS225_push_button_off" ViewPoint="Inside"/>	     	  
+	<Sound WwiseData="true" WwiseEvent="AS225_push_button_on" ViewPoint="Inside"/> 	     	  
+	<Sound WwiseData="true" WwiseEvent="AS225_small_knob" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="AS225_knob" ViewPoint="Inside"/>	
+
+	<!-- Autopilot ========================================================================== -->		
+	<Sound WwiseData="true" WwiseEvent="autopilot_push_button_on" ViewPoint="Inside"/>	  	  
+	<Sound WwiseData="true" WwiseEvent="autopilot_push_button_off" ViewPoint="Inside"/>	  			  
+	<Sound WwiseData="true" WwiseEvent="autopilot_knob_push_button_on" ViewPoint="Inside"/>	  	  
+	<Sound WwiseData="true" WwiseEvent="autopilot_knob_push_button_off" ViewPoint="Inside"/>	  	  		  
+	<Sound WwiseData="true" WwiseEvent="autopilot_heading_knob" ViewPoint="Inside"/>	    
+	<Sound WwiseData="true" WwiseEvent="autopilot_altitude_knob" ViewPoint="Inside"/>	  	  		  
+	<Sound WwiseData="true" WwiseEvent="autopilot_verticalspeed_knob" ViewPoint="Inside"/>	
+	
+	<!-- Misc ========================================================================== -->		
+	<Sound WwiseData="true" WwiseEvent="asdigiflo_knob" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="asvigilus_knob" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="asminiflo_knob" ViewPoint="Inside"/>
+	<Sound WwiseData="true" WwiseEvent="asvigilus_push_button_on" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="asvigilus_push_button_off" ViewPoint="Inside"/>		
+	<Sound WwiseData="true" WwiseEvent="instrument_push_button_off" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="instrument_push_button_on" ViewPoint="Inside"/>	
+	<Sound WwiseData="true" WwiseEvent="ams2000_knob" ViewPoint="Inside"/>
+
+  </AnimationSounds> 	
   
 </SoundInfo>

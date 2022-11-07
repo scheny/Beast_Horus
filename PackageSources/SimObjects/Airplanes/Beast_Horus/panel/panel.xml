@@ -278,7 +278,10 @@
 				<ValuePos>End</ValuePos>
 			</Style>
 			<Value>
-				<Simvar name="ELECTRICAL BATTERY LOAD:1" unit="amps"/>
+				<Multiply>
+					<Simvar name="ELECTRICAL BATTERY LOAD:1" unit="amps"/>
+					<Constant>-1.0</Constant>
+				</Multiply>	
 			</Value>
 			<ColorZone>
 				<Color>red</Color>

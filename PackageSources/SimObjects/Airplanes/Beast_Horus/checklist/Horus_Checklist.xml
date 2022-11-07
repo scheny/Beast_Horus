@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+
+<SimBase.Document Type="Checklist" version="1,0">
+	<Checklist.Checklist>
+		<IncludeCheckpointLibrary FileName="CheckpointsLibrary\\Asobo_DefaultCheckpointLibrary.xml"/>
+
+		<Step ChecklistStepId="PREFLIGHT_GATE">
+			<!-- Preflight inspection - cockpit 1/2 -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_PREFLIGHT_INSPECTION_COCKPIT_1">
+				<Checkpoint Id="Preflight_Inspection_Complete">
+					<Clue name="TT:CLUE.PREFLIGHT_INSPECTION_COMPLETE"/>
+				<CheckpointDesc SubjectTT="TT:GAME.CHECKLIST_PREFLIGHT_INSPECTION" ExpectationTT="TT:GAME.CHECKLIST_COMPLETE"/>
+				<Checkpoint Id="BAGGAGE_STOWED">
+					<CheckpointDesc SubjectTT="TT:GAME.CHECKLIST_BAGGAGE" ExpectationTT="TT:GAME.CHECKLIST_STOWED"/>
+				</Checkpoint>
+		</Checkpoint>
+			</Page>
+  			<!-- Before Starting Engine -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_BEFORE_STARTING_ENGINE">
+				<Checkpoint Id="Doors_Closed_And_Locked">
+					<Clue name="TT:CLUE.DOORS_CLOSED_AND_LOCKED"/>
+					<CheckpointDesc SubjectTT="TT:GAME.CHECKLIST_DOORS" ExpectationTT="TT:GAME.CHECKLIST_CLOSED_AND_LOCKED"/>
+					<Test>
+						<TestValue>
+							<Operator OpType="EQUAL">
+								<Val SimVarName="EXIT OPEN:0" Units="percent"/>
+								<Val Value="0"/>
+							</Operator>
+						</TestValue>
+						<Action Copilot="True" Condition="TestValueFalse" Once="true" EventID="TOGGLE_AIRCRAFT_EXIT"/>
+						<Instrument Id="HIGHLIGHT_DOOR_LATCHES"/>
+					</Test>
+				</Checkpoint>
+				<!-- Parking brake on -->
+				<Checkpoint Id="Battery_Switch_On">
+					<Clue name="TT:CLUE.BATTERY_SWITCH_ON"/>
+					<CheckpointDesc SubjectTT="TT:GAME.CHECKLIST_BATTERY_SWITCH" ExpectationTT="TT:GAME.CHECKLIST_ON"/>
+					<!-- GAME.CHECKLIST_BATTERY_SWITCHES to be used in custom CP ref items in checklist -->
+					<Test>
+						<TestValue>
+							<Val SimVarName="ELECTRICAL MASTER BATTERY" Units="Boolean"/>
+						</TestValue>
+						<Action Copilot="True" Condition="TestValueFalse" Once="true" EventID="TOGGLE_MASTER_BATTERY"/>
+						<Instrument Id="ELECTRICAL_Switch_Battery_Master"/>
+						<Instrument Id="knob_electric_master"/>
+					</Test>
+				</Checkpoint>
+				<!-- XXX Check voltage -->
+				<!-- XXX Check fuel -->
+			</Page>
+			<!-- Starting Engine -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_STARTING_ENGINE">
+				<!-- XXX Strobe light on-->
+				<Checkpoint Id="Area_Clear">
+					<Clue name="TT:CLUE.AREA_CLEAR"/>
+					<CheckpointDesc SubjectTT="TT:GAME.CHECKLIST_AREA" ExpectationTT="TT:GAME.CHECKLIST_CLEAR"/>
+				</Checkpoint>
+				<!-- XXX Engine master on -->
+			</Page>
+			<!-- After Starting Engine -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_AFTER_STARTING_ENGINE_1">
+				<!-- XXX Check rpm -->
+				<!-- XXX Alternator on -->
+			</Page>
+		</Step>
+
+		<Step ChecklistStepId="PREFLIGHT_TAXI_OUT">
+			<!-- Taxi -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_TAXI">
+				<!-- XXX Area clear -->
+				<!-- XXX Nav light on -->
+				<!-- XXX Taxi light on -->
+				<!-- XXX Parking brake release -->
+				<!-- XXX Brakes checked -->
+				<!-- XXX Nosewheel steering checked -->
+				<!-- XXX Flight instruments checked -->
+			</Page>
+		</Step>
+
+		<Step ChecklistStepId="FLIGHT_RUNWAY">
+			<!-- Run-up 1/3 -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_RUN_UP_1">
+				<!-- XXX Flaps 1 -->
+				<!-- XXX Flaps 2 -->
+				<!-- XXX Flaps up -->
+				<!-- XXX Was muss grün sein? -->
+				<!-- XXX Landing light on -->
+				<!-- XXX Pitot heat on -->
+			</Page>
+			<!-- BEFORE take-off -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_BEFORE_TAKE_OFF">
+			</Page>
+		</Step>
+
+		<Step ChecklistStepId="FLIGHT_TAKEOFF">
+
+			<!-- Normal take-off -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_NORMAL_TAKE_OFF">
+			</Page>
+			<!-- Enroute climb -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_ENROUTE_CLIMB">
+			</Page>
+		</Step>
+
+		<Step ChecklistStepId="FLIGHT_CRUISE">
+			<!-- Cruise -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_CRUISE">
+			</Page>
+		</Step>
+
+		<Step ChecklistStepId="FLIGHT_DESCENT">
+			<!-- Descent -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_DESCENT">
+			</Page>
+		</Step>
+
+		<Step ChecklistStepId="LANDING_APPROACH">
+			<!-- Before landing -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_BEFORE_LANDING">
+			</Page>
+		</Step>
+
+		<Step ChecklistStepId="LANDING_TOUCHDOWN">
+			<!-- Normal landing -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_NORMAL_LANDING">
+			</Page>
+		</Step>
+
+		<Step ChecklistStepId="LANDING_GROUNDROLL">
+			<!-- After landing -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_AFTER_LANDING">
+			</Page>
+		</Step>
+		<Step ChecklistStepId="LANDING_TAXI_IN">
+		</Step>
+
+		<Step ChecklistStepId="LANDING_GATE">
+			<!-- Parking -->
+			<Page SubjectTT="TT:GAME.CHECKLIST_PARKING">
+			</Page>
+			<!-- Securing-->
+			<Page SubjectTT="TT:GAME.CHECKLIST_SECURING">
+			</Page>
+		</Step>
+
+	</Checklist.Checklist>
+</SimBase.Document>

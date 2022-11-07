@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ModelInfo>
+	<LODS>
+		<LOD minSize="0" 	ModelFile="BeastHorus_Ext.gltf"/>
+	</LODS>
+<!-- ###################################### -->
+<!-- # BEHAVIOR FILES OFFICIAL FALLBACKS ## -->		
+<!-- ###################################### -->
+	<Behaviors>
+		<Include ModelBehaviorFile="Asobo\Common.xml"/>
+		<Include ModelBehaviorFile="Asobo\Exterior.xml"/>
+		<Include ModelBehaviorFile="Asobo\Generic\FX.xml"/>
+<!-- ###################################### -->
+<!-- CONTROL SURFACES AND ANIMATED SURFACES -->		
+<!-- ###################################### -->
+		<Component ID="HANDLING">
+			<UseTemplate Name="ASOBO_HANDLING_Elevator_Template">
+				<ANIM_NAME>ELEVATOR</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Spoilers_Template">
+				<ANIM_NAME_LEFT>SPOILER_LEFT</ANIM_NAME_LEFT>
+				<ANIM_NAME_RIGHT>SPOILER_RIGHT</ANIM_NAME_RIGHT>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Aileron_Template">
+				<ANIM_NAME_LEFT>AILERON_LEFT</ANIM_NAME_LEFT>
+				<ANIM_NAME_RIGHT>AILERON_RIGHT</ANIM_NAME_RIGHT>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Rudder_Template">
+				<ANIM_NAME>RUDDER</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_HANDLING_Flaps_Template">
+				<ANIM_NAME_LEFT>FLAP_LEFT</ANIM_NAME_LEFT>
+				<ANIM_NAME_RIGHT>FLAP_RIGHT</ANIM_NAME_RIGHT>
+			</UseTemplate>
+		</Component>
+<!-- ###################################### -->
+<!-- ###### LANDING GEAR TIRE EFFECTS ##### -->
+<!-- ###################################### -->
+		<Component ID="GEARS">
+			<UseTemplate Name="ASOBO_GEAR_Left_Template">
+				<ANIM_NAME>GEAR_LEFT</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_GEAR_Right_Template">
+				<ANIM_NAME>GEAR_RIGHT</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_GEAR_Center_Template">
+				<ANIM_NAME>GEAR_NOSE</ANIM_NAME>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_GEAR_Left_Tire_Template">
+				<ANIM_NAME>TIRE_LEFT</ANIM_NAME>
+				<NODE_ID_STILL>GEAR_LEFT_TIRE_STILL</NODE_ID_STILL>
+				<NODE_ID_BLURRED>GEAR_LEFT_TIRE_BLUR</NODE_ID_BLURRED>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_GEAR_Right_Tire_Template">
+				<ANIM_NAME>TIRE_RIGHT</ANIM_NAME>
+				<NODE_ID_STILL>GEAR_RIGHT_TIRE_STILL</NODE_ID_STILL>
+				<NODE_ID_BLURRED>GEAR_RIGHT_TIRE_BLUR</NODE_ID_BLURRED>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_GEAR_Center_Tire_Template">
+				<ANIM_NAME>TIRE_NOSE</ANIM_NAME>
+				<NODE_ID_STILL>GEAR_NOSE_TIRE_STILL</NODE_ID_STILL>
+				<NODE_ID_BLURRED>GEAR_NOSE_TIRE_BLUR</NODE_ID_BLURRED>
+			</UseTemplate>
+			<UseTemplate Name="ASOBO_GEAR_Steering_Template">
+				<ANIM_NAME>GEAR_STEER</ANIM_NAME>
+			</UseTemplate>
+		</Component>
+<!-- ###################################### -->
+<!-- ###### VISUAL EFFECTS AND SMOKE ###### -->
+<!-- ###################################### -->
+
+		<Component ID="LANDING_FX">
+			<UseTemplate Name="ASOBO_LANDING_FX"/>
+		</Component>
+		<Component ID="FX1_LOW_ALTITUDE">
+			<Parameters Type="Override">
+				<FX_GRAPH_PARAM_0>part_size_clamp, 28</FX_GRAPH_PARAM_0>
+			</Parameters>
+			<UseTemplate Name="ASOBO_FX_LOW_ALTITUDE_DUST">
+				<FX_GUID>{C8FB3147-D775-4CD1-AC8F-AEB717924F86}</FX_GUID>
+			</UseTemplate>
+		</Component>
+		<Component ID="NODE_Smoke" node="NODE_Smoke">
+			<UseTemplate Name="ASOBO_GT_FX">
+				<FX_GUID>{79D740B9-8DA5-40BC-9B34-C62A72564199}</FX_GUID>
+				<FX_CONTACT_POINT_ID>-1</FX_CONTACT_POINT_ID>
+				<FX_CODE>(A:ENG N1 RPM:1, percent) 10 &gt;</FX_CODE>
+				<FX_GRAPH_PARAM_0>SIZE, 0.5</FX_GRAPH_PARAM_0>
+				<FX_GRAPH_PARAM_1>OPACITY, 0.25 (A:ENG N1 RPM:1, percent over 100) 0.5 pow *</FX_GRAPH_PARAM_1>
+				<FX_GRAPH_PARAM_2>RPM, (A:ENG N1 RPM:1, percent over 100) 0.5 pow (A:TURB ENG AFTERBURNER PCT ACTIVE:1, percent over 100) +</FX_GRAPH_PARAM_2>
+			</UseTemplate>
+		</Component>
+	</Behaviors>
+</ModelInfo>

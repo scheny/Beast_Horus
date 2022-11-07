@@ -3,7 +3,7 @@
     "Neutral": {
       "creator": "Andreas Schoenwaelder",
       "title": "Horus",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mattis ullamcorper velit sed ullamcorper morbi tincidunt ornare. Elit ut aliquam purus sit amet luctus venenatis lectus. Enim neque volutpat ac tincidunt vitae. Sed sed risus pretium quam vulputate dignissim suspendisse. Ipsum faucibus vitae aliquet nec ullamcorper sit amet. Neque volutpat ac tincidunt vitae semper quis lectus nulla at. Amet aliquam id diam maecenas ultricies mi. Lectus quam id leo in vitae turpis massa sed elementum. Egestas sed sed risus pretium quam. Nibh ipsum consequat nisl vel. Nibh tellus molestie nunc non blandit massa. Diam ut venenatis tellus in metus vulputate eu. Volutpat blandit aliquam etiam erat velit scelerisque. Eget dolor morbi non arcu risus.",
+      "description": "What would James Bond choose to fly? This aircraft is the next generation of personal jet flying.\nTake off from any small grass-strip, cruise at up to 300 KIAS and do some crazy aerobatics whenever you feel like it.\nGentle and predictable stall behavior, yet the power and speed of a true aerobatic jet.\n\nBuckle up! Fly safe, fly Horus!",
       "support-contact": "office@beast.aero",
       "tags": "AIRCRAFT,VERY LIGHT JET,AEROBATIC,JET",
       "media-backgrounds": [
@@ -49,58 +49,6 @@
               {
                 "name": "COCKPIT CREW",
                 "valueStr": "1"
-              }
-            ]
-          }
-        },
-        {
-          "type": "MEDIASLIDER",
-          "data": {
-            "medias": [
-              {
-                "thumbnail": "thumbnail3236x1816.jpg"
-              },
-              {
-                "thumbnail": "thumbnail3236x1816.jpg"
-              }
-            ]
-          }
-        },
-        {
-          "type": "MEDIASCROLLER",
-          "data": {
-            "medias": [
-              {
-                "thumbnail": "placeholder940x530.jpg"
-              },
-              {
-                "thumbnail": "placeholder940x530.jpg"
-              }
-            ]
-          }
-        },
-        {
-          "type": "MEDIASLIDER",
-          "data": {
-            "medias": [
-              {
-                "thumbnail": "thumbnail3236x1816.jpg"
-              },
-              {
-                "thumbnail": "thumbnail3236x1816.jpg"
-              }
-            ]
-          }
-        },
-        {
-          "type": "MEDIASCROLLER",
-          "data": {
-            "medias": [
-              {
-                "thumbnail": "placeholder940x530.jpg"
-              },
-              {
-                "thumbnail": "placeholder940x530.jpg"
               }
             ]
           }

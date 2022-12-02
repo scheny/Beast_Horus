@@ -46,11 +46,6 @@
     </Component>
 
 	<Component ID="HANDLING">	
-		<Component ID="CANOPY_LATCH">
-			<UseTemplate Name="My_Lever_Template">
-				<TOOLTIP_TITLE>Open/Close Canopy</TOOLTIP_TITLE>
-			</UseTemplate>
-		</Component>
 		<Component ID="FLIGHTSTICK">
 			<UseTemplate Name="ASOBO_HANDLING_Yoke_Template">
 				<NODE_ID>Flight_Stick_FA</NODE_ID>
@@ -206,30 +201,15 @@
 			</UseTemplate>
 		</Component>
 		<Component ID="LIGHTING_Switch_Light_HiLo" Node="LIGHTING_Switch_Light_HiLo">
-			<UseTemplate Name="ASOBO_GT_Switch_2states">
-				<ANIM_NAME>switch_hi_lo</ANIM_NAME>
-				<CODE_POS_0>
-					50 (&gt;K:LIGHT_POTENTIOMETER_2_SET)
-				</CODE_POS_0>
-				<CODE_POS_1>
-					100 (&gt;K:LIGHT_POTENTIOMETER_2_SET)
-				</CODE_POS_1>
-				<STATE0_TEST>(A:LIGHT POTENTIOMETER:2, percent)  100 !=</STATE0_TEST>
-				<STATE1_TEST>(A:LIGHT POTENTIOMETER:2, percent)  100 ==</STATE1_TEST>
-				<TOOLTIPID>Lights intensity</TOOLTIPID>
-			</UseTemplate>
-		</Component>
-		<!--		
-		<Component ID="LIGHTING_Switch_Light_HiLo" Node="LIGHTING_Switch_Light_HiLo">
 			<UseTemplate Name="ASOBO_GT_Switch_Code">
 				<ANIM_NAME>switch_hi_lo</ANIM_NAME>
-				<ANIM_CODE>(A:LIGHT POTENTIOMETER:1, percent) 100 == if{ 100 } els{ 0 }</ANIM_CODE>
-				<ANIMTIP_0>Lights intensity 50%%</ANIMTIP_0>
-				<ANIMTIP_1>Lights intensity 100%%</ANIMTIP_1>
-				<LEFT_SINGLE_CODE>(A:LIGHT POTENTIOMETER:1, percent) 100 == if{ 100 } els{ 50 } (&gt;K:LIGHT_POTENTIOMETER_1_SET)</LEFT_SINGLE_CODE>
+				<ANIM_CODE>(A:LIGHT POTENTIOMETER:2, percent) 50 - 2 *</ANIM_CODE>
+				<ANIM_LENGTH>100</ANIM_LENGTH>
+				<LEFT_SINGLE_CODE>(A:LIGHT POTENTIOMETER:2, percent) 50 &gt; if{ 50 } els{ 100 } (&gt;K:LIGHT_POTENTIOMETER_2_SET)</LEFT_SINGLE_CODE>
+				<ANIMTIP_0>Light intensity 50%%</ANIMTIP_0>
+				<ANIMTIP_1>Light intensity 100%%</ANIMTIP_1>
 			</UseTemplate>
 		</Component>
-		-->		
 		<Component ID="LIGHT_STROBE">
 			<UseTemplate Name="ASOBO_LIGHTING_Switch_Light_Strobe_Template">
 				<NODE_ID>LIGHTING_Switch_Light_Strobe</NODE_ID>

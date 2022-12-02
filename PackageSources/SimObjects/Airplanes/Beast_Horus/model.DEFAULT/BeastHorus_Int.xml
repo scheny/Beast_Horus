@@ -17,32 +17,34 @@
 		<Include ModelBehaviorFile="Asobo\GlassCockpit\AS307.xml"/>
 		<!-- ############################################-->
 		
-	<Template Name="My_Lever_Template">
-        <Parameters Type="Default">
-            <ANIM_NAME>CANOPY_HINGE</ANIM_NAME>
-            <NODE_ID>CANOPY_LEVER</NODE_ID>
-            <PART_ID>CANOPY_LEVER</PART_ID>
-            <SCOPE>L</SCOPE>
-            <VAR_NAME>CANOPY_HINGE</VAR_NAME>
-            <TOOLTIP_TITLE>Open/Close Canopy</TOOLTIP_TITLE>
-            <TT_DESCRIPTION_ID>Open/Close</TT_DESCRIPTION_ID>
-            <INTERACTION_TYPE>Knob</INTERACTION_TYPE>
-            <FORMAT_VALUE>'%d%%' @sprintf</FORMAT_VALUE>
-            <CLAMP_VALUE>0 max 100 min</CLAMP_VALUE>
-            <WRAP>False</WRAP>
-        </Parameters>
-        <Parameters Type="Default">
-            <KNOB_ID>#ANIM_NAME#</KNOB_ID>
-            <INPUT_EVENT_ID_SOURCE>INSTRUMENT</INPUT_EVENT_ID_SOURCE>
-        </Parameters>
-        <UseTemplate Name="ASOBO_#INPUT_EVENT_ID_SOURCE#_Base_Template">
-            <IE_NAME>#ANIM_NAME#</IE_NAME>
-            <SET_STATE_EXTERNAL>(&gt;#SCOPE#:#VAR_NAME#)</SET_STATE_EXTERNAL>
-            <GET_STATE_EXTERNAL>(#SCOPE#:#VAR_NAME#)</GET_STATE_EXTERNAL>
-            <ENUM_VAL_TO_POS_EXTERNAL>l0</ENUM_VAL_TO_POS_EXTERNAL>
-        </UseTemplate>
-    </Template>
-		
+    <Component ID="CANOPY_HINGE">
+      <UseTemplate Name="ASOBO_GT_Anim_Code">
+        <ANIM_NAME>CANOPY_HINGE</ANIM_NAME>
+        <ANIM_CODE>(L:canopyPosition, number)</ANIM_CODE>
+        <ANIM_LENGTH>100</ANIM_LENGTH>
+        <NODE_ID>CANOPY_HINGE</NODE_ID>
+      </UseTemplate>
+    </Component>
+    <Component ID="CANOPY_LEVER" Node="CANOPY_LEVER">
+      <UseTemplate Name="ASOBO_GT_Anim_Code">
+        <ANIM_NAME>CANOPY_LEVER</ANIM_NAME>
+        <ANIM_CODE>(L:canopyPosition, number)</ANIM_CODE>
+        <ANIM_LENGTH>100</ANIM_LENGTH>
+        <NODE_ID>CANOPY_LEVER</NODE_ID>
+      </UseTemplate>
+      <UseTemplate Name="ASOBO_GT_Interaction_DraggingAxis_Code">
+        <HIGHLIGHT_NODE_ID>CANOPY_LEVER</HIGHLIGHT_NODE_ID>
+        <TOOLTIPID>Open/close canopy</TOOLTIPID>
+        <UP_CODE>
+          (L:canopyPosition,number) 0 &gt; if{ (L:canopyPosition,number) 4 - (>L:canopyPosition,number) }
+        </UP_CODE>
+        <DOWN_CODE>
+          (L:canopyPosition,number) 100 &lt; if{ (L:canopyPosition,number) 4 + (>L:canopyPosition,number) }
+        </DOWN_CODE>
+        <AXIS>X</AXIS>
+      </UseTemplate>
+    </Component>
+
 	<Component ID="HANDLING">	
 		<Component ID="CANOPY_LATCH">
 			<UseTemplate Name="My_Lever_Template">
@@ -342,8 +344,8 @@
 			<UseTemplate Name="ASOBO_GT_Switch_Code">
 				<ANIM_NAME>switch_smoke</ANIM_NAME>
 				<ANIM_CODE>(L:SMOKE RED ACTIVE,number) 1 == if{ 100 } els{ 0 }</ANIM_CODE>
-				<ANIMTIP_0>Red Aerobatics Smoke (Off)</ANIMTIP_0>
-				<ANIMTIP_1>Red Aerobatics Smoke (On)</ANIMTIP_1>
+				<ANIMTIP_0>Smoke (Off, not functional)</ANIMTIP_0>
+				<ANIMTIP_1>Smoke (On, not functional)</ANIMTIP_1>
 				<LEFT_SINGLE_CODE>(L:SMOKE RED ACTIVE,number) ! (&gt;L:SMOKE RED ACTIVE,number)</LEFT_SINGLE_CODE>
 			</UseTemplate>
 		</Component>

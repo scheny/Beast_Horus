@@ -69,6 +69,15 @@
 <!-- ###### VISUAL EFFECTS AND SMOKE ###### -->
 <!-- ###################################### -->
 
+		<Component ID="CANOPY_HINGE">
+			<UseTemplate Name="ASOBO_GT_Anim_Code">
+				<ANIM_NAME>CANOPY_HINGE</ANIM_NAME>
+				<ANIM_CODE>(L:canopyPosition, number)</ANIM_CODE>
+				<ANIM_LENGTH>100</ANIM_LENGTH>
+				<NODE_ID>CANOPY_HINGE</NODE_ID>
+			</UseTemplate>
+		</Component>
+
 		<Component ID="LANDING_FX">
 			<UseTemplate Name="ASOBO_LANDING_FX"/>
 		</Component>
